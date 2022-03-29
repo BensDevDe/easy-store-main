@@ -10,7 +10,7 @@
 }
 
 .signup-container {
-  height: 60vh;
+  height: 50vh;
   width: 80%;
   margin: 0 auto;
 }
@@ -175,7 +175,7 @@
           box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
   z-index: 999;
   position: fixed;
-  left: 10%;
+  right: 10%;
   top: 3%;
 }
 
@@ -324,6 +324,66 @@
 .welcome_container a:hover {
   font-weight: bold;
   color: #A47CA6;
+}
+
+.title-wrapper {
+  height: 100%;
+  -webkit-animation: move 10s ease-in-out infinite alternate;
+          animation: move 10s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes move {
+  25% {
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  50% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+  75% {
+    -webkit-transform: translateY(-150px);
+            transform: translateY(-150px);
+  }
+  100% {
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
+}
+
+@keyframes move {
+  25% {
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  50% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+  75% {
+    -webkit-transform: translateY(-150px);
+            transform: translateY(-150px);
+  }
+  100% {
+    -webkit-transform: translateY(-200px);
+            transform: translateY(-200px);
+  }
+}
+
+.theme-animation {
+  -webkit-transition: all 20s linear;
+  transition: all 20s linear;
+}
+
+.theme-animation:hover {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.register-link {
+  text-decoration: none;
+  color: #A47CA6;
+  font-size: 1.2em;
 }
 
 body {

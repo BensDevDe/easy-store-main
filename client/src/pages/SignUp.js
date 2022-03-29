@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerAction } from '../redux/actions/auth'
 
-import UserDetails from './UserDetails'
-import PersonalDetails from './PersonalDetails'
-import Confirmation from './Confirmation'
-import Success from './Success'
+import UserDetails from '../components/UserDetails'
+import PersonalDetails from '../components/PersonalDetails'
+import Confirmation from '../components/Confirmation'
+import Success from '../components/Success'
 
 import { FaArrowRight } from 'react-icons/fa'
 

@@ -1,20 +1,24 @@
 import './sass/App.css'
-import SignUp from './components/SignUp'
-import SignIn from './components/SignIn'
-import Welcome from './components/Welcome'
-import Home from './pages/Home'
+import SignUp from './pages/SignUp'
+import Welcome from './pages/Welcome'
+import Navbar from './components/Navbar'
+import Home from './pages/Home.jsx'
+import Footer from './components/Footer'
 
-import { Routes, Route, HashRouter, BrowserRouter } from 'react-router-dom'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar
+     
+       />
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/home' element={<Home />} />
         <Route path='/confirm/:confirmationCode' element={<Welcome />} />
-        <Route path='/signin' element={<SignIn />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

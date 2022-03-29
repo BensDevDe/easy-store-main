@@ -18,7 +18,7 @@ const Welcome = () => {
 
       <h3>Account confirmed!</h3>
 
-      <NavLink to={"/signin"}>Please Login</NavLink>
+      <NavLink to={"/"}>Please Login</NavLink>
     </div>
   );
 };

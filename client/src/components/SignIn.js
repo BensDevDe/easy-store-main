@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { loginAction } from '../redux/actions/auth'
 
-const SignIn = () => {
+const SignIn = ({isShowLogin}) => {
   const [newUser, setNewUser] = useState({
     firstName: '',
     lastName: '',
@@ -21,12 +21,8 @@ const SignIn = () => {
     dispatch(loginAction(newUser))
   }
 
-  const [isShowLogin, setIsShowLogin] = useState(false);
-
-
-
   return (
-    // <div className={`${isShowLogin ? "wrapper active" : "wrapper show"}`}>
+    <div className={`${isShowLogin ? "wrapper active" : "wrapper show"}`}>
     <div className="wrapper">
       <div className="logo">
         {" "}
@@ -76,7 +72,7 @@ const SignIn = () => {
        
       </div>
     </div>
-  // </div>
+   </div>
    
   )
 }
