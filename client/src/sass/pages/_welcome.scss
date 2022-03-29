@@ -1,0 +1,16 @@
+.welcome_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    color: $color-darkgrey;
+
+    &:hover {
+      font-weight: bold;
+      color: $color-purple;
+    }
+  }
+}

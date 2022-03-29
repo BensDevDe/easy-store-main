@@ -1,0 +1,121 @@
+
+
+
+.signup-container {
+  height: 60vh;
+  width: 80%;
+  margin: 0 auto;
+  .signup-form {
+    width: 50vw;
+    height: 60vh;
+    border: 2px solid $color-purple;
+    padding: 2em;
+    border-radius: 0.25rem;
+
+    h3,
+    p {
+      color: #a4a69c;
+    }
+    .progress-range-1 {
+      border: 1px solid $color-purple;
+      height: 0.8em;
+      border-radius: 0.25rem;
+
+      background: linear-gradient(to right, $color-purple 0 25%, $color-white 25% 100%);
+    }
+    .progress-range-2 {
+      border: 1px solid $color-darkgrey;
+      height: 0.8em;
+      border-radius: 0.25rem;
+
+      background: linear-gradient(to right, $color-purple 0 50%, $color-white 50% 100%);
+    }
+    .progress-range-3 {
+      border: 1px solid $color-darkgrey;
+      height: 0.8em;
+      border-radius: 0.25rem;
+
+      background: linear-gradient(to right, $color-purple 0 75%, $color-white 75% 100%);
+    }
+    .progress-range-4 {
+      border: 1px solid $color-darkgrey;
+      height: 0.8em;
+      border-radius: 0.25rem;
+
+      background: $color-purple
+    }
+    .page-switch {
+      position: fixed;
+      bottom: 0;
+      margin-bottom: 25px;
+      .button-animated {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.4em;
+        font-weight: 600;
+        color: $color-purple;
+        background: transparent;
+        border: none;
+        margin-right: 2em;
+
+        &:hover {
+          opacity: 0.5;
+        }
+        .button-icon {
+          vertical-align: center;
+          font-size: 0.7em;
+        }
+      }
+      .button-animated-confirmation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.4em;
+        font-weight: 600;
+        color: $color-purple;
+        background: transparent;
+        border: none;
+        &:hover {
+          opacity: 0.5;
+        }
+        .button-icon {
+          vertical-align: center;
+          font-size: 0.7em;
+        }
+        .signup-img {
+          width: 5%;
+          object-fit: cover;
+          overflow: hidden;
+        }
+      }
+      .go-home {
+        color: $color-darkgrey;
+      }
+    }
+    .confirmation-box > div {
+      color: $color-grey;
+      margin-top: 15px;
+      h6 {
+        font-weight: bold;
+      }
+    }
+    .encrypted {
+      position: absolute;
+      bottom: 0;
+      font-size: 0.8em;
+      margin-bottom: -6px;
+    }
+  }
+  .success {
+    font-size: 1.3em;
+    width: 80%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      font-weight: bold;
+    }
+  }
+}
