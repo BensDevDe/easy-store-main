@@ -13,8 +13,8 @@ import {
 const user = JSON.parse(localStorage.getItem('user'))
 
 const initialState = user
-  ? { isLoggedIn: true, user }
-  : { isLoggedIn: false, user: null }
+  ? { isLoggedIn: true, user, loading: false }
+  : { isLoggedIn: false, loading: true, user: null }
 
 const authReducer = (state = initialState, action) => {
   const { type, payload } = action

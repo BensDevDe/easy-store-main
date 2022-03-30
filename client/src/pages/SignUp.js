@@ -26,9 +26,6 @@ const SignUp = () => {
     password: '',
   })
 
-  const { message } = useSelector((state) => state.messageReducer)
-  const [successful, setSuccessful] = useState(false)
-
   const [page, setPage] = useState(1)
 
   const nextPage = (e) => {
@@ -48,7 +45,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     dispatch(registerAction(newUser))
-    setSuccessful(true)
+
     setPage(page + 1)
   }
 

@@ -1,11 +1,13 @@
 import React from 'react'
 import ReCAPTCHA from "react-google-recaptcha";
+import validator from 'validator';
 
 
 const UserDetails = ({ newUser, setNewUser }) => {
     function onChange(value) {
         console.log("Captcha value: 6LcmkSIfAAAAAEotZRNjzvE5G69gRt4LgwLbx8qV", value);
       }
+     
   return (
     <div >
       <div className='form-group'>
@@ -18,7 +20,7 @@ const UserDetails = ({ newUser, setNewUser }) => {
           placeholder='Enter email'
           value={newUser.email}
           onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-          required
+        
        
         />
         <small id='emailHelp' className='form-text text-muted'>

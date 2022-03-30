@@ -75,16 +75,13 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
   const loggedUser = useSelector((state) => state.authReducer)
-  const {isLoggedIn} = loggedUser
+  const { isLoggedIn } = loggedUser
 
   console.log(isLoggedIn)
-  
 
   const logoutHandler = () => {
     dispatch(logoutAction())
   }
-
-  
 
   return (
     <Container>
@@ -105,7 +102,8 @@ const Navbar = () => {
         <Right>
           {isLoggedIn ? (
             <MenuItem>
-              {loggedUser.user.db_user.name.firstName}
+              {loggedUser.user.db_user.name.firstName}{' '}
+              {loggedUser.user.db_user.name.lastName}
             </MenuItem>
           ) : (
             <MenuItem>Free Trial</MenuItem>

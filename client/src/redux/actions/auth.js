@@ -75,8 +75,6 @@ export const loginAction = (newUser) => async (dispatch) => {
     })
 
     localStorage.setItem('user', JSON.stringify(response.data))
-
-
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.msg) ||

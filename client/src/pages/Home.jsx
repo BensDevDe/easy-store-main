@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Announcment from '../components/Announcment'
 import Intro from '../components/Intro'
 import ThemeList from '../components/ThemeList'
@@ -8,19 +8,20 @@ import Support from '../components/Support'
 import Contact from '../components/Contact'
 import Newsletter from '../components/Newsletter'
 import Toggle from '../components/Toggle'
-import ThemeContext from '../components/context'
+
+import { useSelector } from 'react-redux'
 // import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 const Home = () => {
-  // const theme = useContext(ThemeContext)
-  // const darkMode = theme.state.darkMode
+  const { darkMode } = useSelector((state) => state.themeReducer)
+
   return (
     <div
       className='Home'
-      // style={{
-      //   backgroundColor: darkMode ? '#222' : '#E8E8E8',
-      //   color: darkMode && '#DCDCDC',
-      // }}
+      style={{
+        backgroundColor: darkMode ? '#222' : '#E8E8E8',
+        color: darkMode && '#DCDCDC',
+      }}
     >
       <Announcment />
       <Toggle />
