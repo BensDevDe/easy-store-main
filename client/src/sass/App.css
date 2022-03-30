@@ -45,26 +45,17 @@
   background: linear-gradient(to right, #A47CA6 0 25%, white 25% 100%);
 }
 
-.signup-container .signup-form .progress-range-2 {
-  border: 1px solid #35403A;
-  height: 0.8em;
-  border-radius: 0.25rem;
+.signup-container .signup-form .range-2 {
   background: -webkit-gradient(linear, left top, right top, color-stop(0, #A47CA6), color-stop(50%, white));
   background: linear-gradient(to right, #A47CA6 0 50%, white 50% 100%);
 }
 
-.signup-container .signup-form .progress-range-3 {
-  border: 1px solid #35403A;
-  height: 0.8em;
-  border-radius: 0.25rem;
+.signup-container .signup-form .range-3 {
   background: -webkit-gradient(linear, left top, right top, color-stop(0, #A47CA6), color-stop(75%, white));
   background: linear-gradient(to right, #A47CA6 0 75%, white 75% 100%);
 }
 
-.signup-container .signup-form .progress-range-4 {
-  border: 1px solid #35403A;
-  height: 0.8em;
-  border-radius: 0.25rem;
+.signup-container .signup-form .range-4 {
   background: #A47CA6;
 }
 

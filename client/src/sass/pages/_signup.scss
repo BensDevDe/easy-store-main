@@ -29,33 +29,21 @@
         $color-white 25% 100%
       );
     }
-    .progress-range-2 {
-      border: 1px solid $color-darkgrey;
-      height: 0.8em;
-      border-radius: 0.25rem;
-
+    .range-2 {
       background: linear-gradient(
         to right,
         $color-purple 0 50%,
         $color-white 50% 100%
       );
     }
-    .progress-range-3 {
-      border: 1px solid $color-darkgrey;
-      height: 0.8em;
-      border-radius: 0.25rem;
-
+    .range-3 {
       background: linear-gradient(
         to right,
         $color-purple 0 75%,
         $color-white 75% 100%
       );
     }
-    .progress-range-4 {
-      border: 1px solid $color-darkgrey;
-      height: 0.8em;
-      border-radius: 0.25rem;
-
+    .range-4 {
       background: $color-purple;
     }
     .page-switch {

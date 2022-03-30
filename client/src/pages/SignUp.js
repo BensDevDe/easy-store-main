@@ -75,9 +75,9 @@ const SignUp = () => {
             <p>Step {page} of 4</p>
             <div
               className={` ${page === 1 ? 'progress-range-1' : ''} ${
-                page === 2 ? 'progress-range-2' : ''
-              } ${page === 3 ? 'progress-range-3' : ''} ${
-                page === 4 ? 'progress-range-4' : ''
+                page === 2 ? 'progress-range-1 range-2' : ''
+              } ${page === 3 ? 'progress-range-1 range-3' : ''} ${
+                page === 4 ? 'progress-range-1 range-4' : ''
               }`}
             ></div>
           </div>

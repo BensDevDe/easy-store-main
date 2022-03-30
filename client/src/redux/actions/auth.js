@@ -33,12 +33,12 @@ export const registerAction = (newUser) => async (dispatch) => {
     })
     dispatch({
       type: SET_MESSAGE,
-      payload: response.data.message,
+      payload: response.data.msg,
     })
   } catch (error) {
     const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
+      (error.response && error.response.data && error.response.data.msg) ||
+      error.msg ||
       error.toString()
     dispatch({
       type: REGISTER_FAIL,
@@ -66,19 +66,21 @@ export const loginAction = (newUser) => async (dispatch) => {
       config
     )
 
-    localStorage.setItem('user', JSON.stringify(response.data))
-
     dispatch({
       type: LOGIN_SUCCESS,
     })
     dispatch({
       type: SET_MESSAGE,
-      payload: response.data.message,
+      payload: response.data.msg,
     })
+
+    localStorage.setItem('user', JSON.stringify(response.data))
+
+
   } catch (error) {
     const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
+      (error.response && error.response.data && error.response.data.msg) ||
+      error.msg ||
       error.toString()
     dispatch({
       type: LOGIN_FAIL,
@@ -98,12 +100,12 @@ export const verifyAction = (code) => async (dispatch) => {
     })
     dispatch({
       type: SET_MESSAGE,
-      payload: response.data.message,
+      payload: response.data.msg,
     })
   } catch (error) {
     const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
+      (error.response && error.response.data && error.response.data.msg) ||
+      error.msg ||
       error.toString()
     dispatch({
       type: VERIFY_FAIL,
@@ -116,7 +118,7 @@ export const verifyAction = (code) => async (dispatch) => {
 }
 
 export const logoutAction = () => async (dispatch) => {
-  await axios.post(API_URL + 'logout', { widthCredentials: true })
+  await axios.get(API_URL + 'logout', { widthCredentials: true })
   localStorage.removeItem('user')
   dispatch({
     type: LOGOUT,
