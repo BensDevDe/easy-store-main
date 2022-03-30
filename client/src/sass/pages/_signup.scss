@@ -1,13 +1,15 @@
-
-
-
 .signup-container {
-  height: 50vh;
+  height: 35em;
   width: 80%;
   margin: 0 auto;
+  margin-bottom: 40vh;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
   .signup-form {
-    width: 50vw;
-    height: 60vh;
+    width: 60em;
+    height: 40em;
     border: 2px solid $color-purple;
     padding: 2em;
     border-radius: 0.25rem;
@@ -21,28 +23,40 @@
       height: 0.8em;
       border-radius: 0.25rem;
 
-      background: linear-gradient(to right, $color-purple 0 25%, $color-white 25% 100%);
+      background: linear-gradient(
+        to right,
+        $color-purple 0 25%,
+        $color-white 25% 100%
+      );
     }
     .progress-range-2 {
       border: 1px solid $color-darkgrey;
       height: 0.8em;
       border-radius: 0.25rem;
 
-      background: linear-gradient(to right, $color-purple 0 50%, $color-white 50% 100%);
+      background: linear-gradient(
+        to right,
+        $color-purple 0 50%,
+        $color-white 50% 100%
+      );
     }
     .progress-range-3 {
       border: 1px solid $color-darkgrey;
       height: 0.8em;
       border-radius: 0.25rem;
 
-      background: linear-gradient(to right, $color-purple 0 75%, $color-white 75% 100%);
+      background: linear-gradient(
+        to right,
+        $color-purple 0 75%,
+        $color-white 75% 100%
+      );
     }
     .progress-range-4 {
       border: 1px solid $color-darkgrey;
       height: 0.8em;
       border-radius: 0.25rem;
 
-      background: $color-purple
+      background: $color-purple;
     }
     .page-switch {
       position: fixed;

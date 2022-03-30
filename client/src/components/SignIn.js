@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { loginAction } from '../redux/actions/auth'
 
-const SignIn = ({isShowLogin}) => {
+const SignIn = ({isShowLogin, showLogin}) => {
   const [newUser, setNewUser] = useState({
     firstName: '',
     lastName: '',
@@ -67,7 +67,7 @@ const SignIn = ({isShowLogin}) => {
         </button>
       </form>
       <div className="text-center fs-6 " >
-        <p className="signUp-info">Don't have any account, please <span> <Link to="/signup">SIGN UP </Link>{" "}</span></p>
+        <p className="signUp-info">New to Easy-Store?   <span onClick={() => showLogin()}> <Link to="/signup">Create an account </Link>{" "}</span></p>
         {" "}
        
       </div>

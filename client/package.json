@@ -30,7 +30,11 @@
     "styled-components": "^5.3.5",
     "validator": "^13.1.1",
     "web-vitals": "^2.1.4",
-    "@emailjs/browser": "^3.4.0"
+    "@emailjs/browser": "^3.4.0",
+  
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.3",
+    "@mui/styled-engine-sc": "^5.5.2"
   },
   "scripts": {
     "start": "react-scripts start",

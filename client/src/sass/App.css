@@ -10,14 +10,23 @@
 }
 
 .signup-container {
-  height: 50vh;
+  height: 35em;
   width: 80%;
   margin: 0 auto;
+  margin-bottom: 40vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .signup-container .signup-form {
-  width: 50vw;
-  height: 60vh;
+  width: 60em;
+  height: 40em;
   border: 2px solid #A47CA6;
   padding: 2em;
   border-radius: 0.25rem;
@@ -226,6 +235,7 @@
   font-size: 0.8rem;
   color: white;
   padding: 10px 15px 10px 10px;
+  overflow: hidden;
 }
 
 .wrapper .form-field input::-webkit-input-placeholder {
@@ -384,6 +394,10 @@
   text-decoration: none;
   color: #A47CA6;
   font-size: 1.2em;
+}
+
+.register-link:hover {
+  color: #35403A;
 }
 
 body {

@@ -55,16 +55,13 @@ const SignUp = () => {
   const navigate = useNavigate()
 
   const navigateHome = () => {
-    navigate('/home')
+    navigate('/')
   }
 
   return (
-    <div className='d-flex justify-content-around align-items-end signup-container'>
+    <div className=' signup-container'>
       <div>
-        <img
-          src={process.env.PUBLIC_URL + '/images/Easy_Store_logo.png'}
-          alt='logo'
-        />
+        <img src={process.env.PUBLIC_URL + '/Easy_Store_(4).png'} alt='logo' />
       </div>
       <AnimatePresence>
         <motion.div
@@ -107,8 +104,7 @@ const SignUp = () => {
                 setNewUser={setNewUser}
               />
             ) : page === 4 ? (
-              <Success
-              newUser={newUser} />
+              <Success newUser={newUser} />
             ) : null}
 
             <div className='d-flex justify-content-center mt-4'>
@@ -165,8 +161,14 @@ const SignUp = () => {
                   </button>
                 </div>
               ) : page === 4 ? (
-                <div className="d-flex page-switch" >
-                  <button type="submit" onClick={navigateHome} className=" button-animated go-home">HOME</button>
+                <div className='d-flex page-switch'>
+                  <button
+                    type='submit'
+                    onClick={navigateHome}
+                    className=' button-animated go-home'
+                  >
+                    HOME
+                  </button>
                 </div>
               ) : null}
             </div>

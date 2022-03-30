@@ -29,4 +29,8 @@
   text-decoration: none;
   color: $color-purple;
   font-size: 1.2em;
+
+  &:hover {
+      color: $color-darkgrey;
+  }
 }
