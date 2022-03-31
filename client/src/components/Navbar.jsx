@@ -106,7 +106,7 @@ const Navbar = () => {
               {loggedUser.user.db_user.name.lastName}
             </MenuItem>
           ) : (
-            <MenuItem>Free Trial</MenuItem>
+            <MenuItem>Free Trial123</MenuItem>
           )}
 
           {isLoggedIn ? (
