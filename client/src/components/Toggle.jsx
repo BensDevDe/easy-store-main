@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-
-
 import { useDispatch, useSelector } from 'react-redux'
 import { themeAction } from '../redux/actions/themeAction'
 

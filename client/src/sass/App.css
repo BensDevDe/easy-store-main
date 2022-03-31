@@ -10,18 +10,15 @@
 }
 
 .signup-container {
-  height: 35em;
-  width: 80%;
+  height: 120vh;
+  width: 100%;
   margin: 0 auto;
-  margin-bottom: 40vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .signup-container .signup-form {

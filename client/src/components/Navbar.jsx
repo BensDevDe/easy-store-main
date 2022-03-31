@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import { Search } from '@material-ui/icons'
 import SignIn from './SignIn'
 import { logoutAction } from '../redux/actions/auth'
+import Toggle from '../components/Toggle'
+import { Link } from 'react-router-dom'
+
 
 const Container = styled.div`
   height: 100px;
@@ -95,9 +98,10 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
+          <Link to={"/"}>
           <LogoDiv
             src={process.env.PUBLIC_URL + '/images/Easy_Store_logo.png'}
-          ></LogoDiv>
+          ></LogoDiv></Link>
         </Center>
         <Right>
           {isLoggedIn ? (
@@ -106,7 +110,7 @@ const Navbar = () => {
               {loggedUser.user.db_user.name.lastName}
             </MenuItem>
           ) : (
-            <MenuItem>Free Trial123</MenuItem>
+            <MenuItem>Free Trial</MenuItem>
           )}
 
           {isLoggedIn ? (
@@ -116,6 +120,7 @@ const Navbar = () => {
           )}
 
           <MenuItem>Prices</MenuItem>
+          <Toggle/>
         </Right>
       </Wrapper>
     </Container>

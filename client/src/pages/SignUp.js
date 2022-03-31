@@ -14,7 +14,10 @@ import { FaArrowRight } from 'react-icons/fa'
 
 import { FaArrowLeft } from 'react-icons/fa'
 
+
+
 const SignUp = () => {
+  const { darkMode } = useSelector((state) => state.themeReducer)
   const [newUser, setNewUser] = useState({
     firstName: '',
     lastName: '',
@@ -56,7 +59,11 @@ const SignUp = () => {
   }
 
   return (
-    <div className=' signup-container'>
+    
+    <div className='signup-container' style={{
+      backgroundColor: darkMode ? '#222' : '#E8E8E8',
+      color: darkMode && '#DCDCDC',
+    }}>
       <div>
         <img src={process.env.PUBLIC_URL + '/Easy_Store_(4).png'} alt='logo' />
       </div>
