@@ -50,6 +50,16 @@ const SocialIcon = styled.div`
   justify-content: center;
   margin-right: 20px;
 `
+
+const Copy = styled.div`
+display:flex;
+flex-direction:row;
+justify-content:center;
+font-size:18px;
+font-weight;400;
+padding:5px;
+
+`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
@@ -90,6 +100,7 @@ const Payment = styled.img`
 
 const Footer = () => {
   return (
+    <>
     <Container>
       <Left>
         <Logo
@@ -147,6 +158,8 @@ const Footer = () => {
         <Payment src='./images/payment_icons_react.png' />
       </Right>
     </Container>
+    <Copy>&copy; 2022 easy-shop.com</Copy>
+    </>
   )
 }
 
