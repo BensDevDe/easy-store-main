@@ -1,8 +1,8 @@
 export const ThemesImg = [
     {
         id:1,
-        img: "./images/long_img_1.png",
-        link:"http://sardinenbarberlin.com"
+        img: "./images/micky_theme_1.png",
+        link:"https://organic-care-app.herokuapp.com/"
 
     },
     {

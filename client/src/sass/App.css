@@ -392,3 +392,13 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 /*# sourceMappingURL=App.css.map */
+
+ul li a {
+  text-decoration: none;
+  color: #A47CA6;
+}
+
+ul li a:hover {
+  color: #A47CA6;
+  font-weight: 500;
+}

@@ -10,9 +10,14 @@ import {
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import {mobileM} from "../responsive"
+import {tablet} from "../responsive"
+
 const Container = styled.div`
   display: flex;
   overflow: hidden;
+  ${mobileM({flexDirection:"column"  })}
+  ${tablet({flexDirection:"column"  })}
   
 `
 const Left = styled.div`
@@ -20,6 +25,7 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  
 `
 const Logo = styled.img`
   width: 120px;
@@ -29,6 +35,7 @@ const Logo = styled.img`
 const Desc = styled.p`
   margin: 20px 0px;
   width: 80%;
+ 
 `
 const SocialContainer = styled.div`
   display: flex;
@@ -57,6 +64,7 @@ const List = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
+  
 `
 
 const ListItem = styled.li`
@@ -111,16 +119,12 @@ const Footer = () => {
       <Center>
         <Title>Links</Title>
         <List>
-          <ListItem>Impressum</ListItem>
-          <ListItem>AGB</ListItem>
-          <ListItem>Privecy Policy</ListItem>
-          <ListItem>Terms</ListItem>
-          <ListItem>Help Center</ListItem>
-          <ListItem>FAQ</ListItem>
-          <ListItem>24/7 Support</ListItem>
-          <ListItem><Link to={"/"}style={{color:'black'}} >Home</Link></ListItem>
-          {/* <Link to='/'style={{color:'black'}}>
-              </Link> */}
+          <ListItem><Link to="/impressum">Impressum</Link></ListItem>
+          <ListItem><Link to="/agb">AGB</Link></ListItem>
+          <ListItem><Link to="/privacy">Privacy Policy</Link></ListItem>
+          <ListItem><Link to="/terms">Terms</Link></ListItem>
+          <ListItem><Link to="/faq">FAQ</Link></ListItem>
+          <ListItem><Link to="/" >Home</Link></ListItem>
         </List>
       </Center>
       <Right>

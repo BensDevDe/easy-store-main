@@ -6,7 +6,11 @@ import Home from './pages/Home.jsx'
 import Footer from './components/Footer'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+import Impressum from './pages/Impressum'
+import Agb from './pages/Agb'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
+import Faq from './pages/Faq'
 
 function App() {
   const { darkMode } = useSelector((state) => state.themeReducer)
@@ -22,6 +26,11 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/confirm/:confirmationCode' element={<Welcome />} />
+        <Route path='/impressum' element={<Impressum/>} />
+        <Route path='/agb' element={<Agb/>} />
+        <Route path='/privacy' element={<Privacy/>} />
+        <Route path='/terms' element={<Terms/>} />
+        <Route path='/faq' element={<Faq/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
