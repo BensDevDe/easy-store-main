@@ -402,3 +402,9 @@ ul li a:hover {
   color: #A47CA6;
   font-weight: 500;
 }
+
+ a {
+  text-decoration: none;
+  color: #A47CA6;
+  font-weight: 500;
+}

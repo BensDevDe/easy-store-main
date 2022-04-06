@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Search } from '@material-ui/icons'
@@ -40,6 +40,7 @@ const Language = styled.span`
   padding-left: 150px;
   font-size: 14px;
   cursor: pointer;
+  display:none;
   ${tablet({display:"none" })}
   
 `

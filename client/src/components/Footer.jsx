@@ -134,7 +134,7 @@ const Footer = () => {
           <ListItem><Link to="/agb">AGB</Link></ListItem>
           <ListItem><Link to="/privacy">Privacy Policy</Link></ListItem>
           <ListItem><Link to="/terms">Terms</Link></ListItem>
-          <ListItem><Link to="/faq">FAQ</Link></ListItem>
+          <ListItem><Link to="/faq">Cookies</Link></ListItem>
           <ListItem><Link to="/" >Home</Link></ListItem>
         </List>
       </Center>
@@ -158,7 +158,7 @@ const Footer = () => {
         <Payment src='./images/payment_icons_react.png' />
       </Right>
     </Container>
-    <Copy>&copy; 2022 easy-shop.com</Copy>
+    <Copy>&copy; 2022 Easy-store.com</Copy>
     </>
   )
 }

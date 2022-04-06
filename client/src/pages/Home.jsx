@@ -9,7 +9,7 @@ import Contact from '../components/Contact'
 import Newsletter from '../components/Newsletter'
 import Toggle from '../components/Toggle'
 import { useSelector } from 'react-redux'
-// import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
+
 
 const Home = () => {
   const { darkMode } = useSelector((state) => state.themeReducer)
@@ -31,7 +31,6 @@ const Home = () => {
       <Support />
       <Newsletter />
       <Contact />
-      {/* <ScrollUpButton style={{backgroundColor:"#a47ca6"}}/> */}
     </div>
   )
 }
