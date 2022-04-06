@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import {mobileS} from "../responsive"
+import {mobileM} from "../responsive"
+import {tablet} from "../responsive"
 
 
 const Container = styled.div`
@@ -9,6 +12,9 @@ height:40vh;
 margin:20px 10px;
 border:2px solid rgb(243,242,242);
 border-radius:8px;
+${mobileS({ width:"40%", height:"20vh"})}
+${mobileM({ width:"40%", height:"30vh"})}
+${tablet({ width:"40%", height:"30vh"})}
 `
 
 const Browser = styled.div`

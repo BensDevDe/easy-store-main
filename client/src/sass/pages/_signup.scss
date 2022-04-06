@@ -1,12 +1,12 @@
-.signup-container {
-  height: 35em;
-  width: 80%;
-  margin: 0 auto;
-  margin-bottom: 40vh;
 
+.signup-container {
+  height: 120vh;
+  width: 100%;
+  margin: 0 auto;
+  //margin-bottom: 40vh;
   display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
+  justify-content: center;
+
   .signup-form {
     width: 60em;
     height: 40em;

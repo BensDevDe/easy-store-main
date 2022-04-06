@@ -2,6 +2,8 @@ import { Send } from '@material-ui/icons'
 import React from 'react'
 import styled from 'styled-components'
 import { useState } from "react"
+import {mobileM} from "../responsive"
+import {tablet} from "../responsive"
 
 const Container = styled.div
 `
@@ -11,18 +13,25 @@ align-items:center;
 justify-content:center;
 flex-direction: column;
 border-top:0.5px solid lightgray;
+${mobileM({height:"70vh"})}
+${tablet({height:"70vh"})}
+
+
 `
 const Title = styled.h1
 `
 font-size:40px;
 margin-bottom: 20px;
 font-weight:500;
+${tablet({fontSize:"32px"})}
 `
 const Description  = styled.div
 `
 font-size: 24px;
 font-weight: 300;
 margin-bottom:20px;
+${mobileM({textAlign:"center"})}
+${tablet({textAlign:"center", fontSize:"24px"})}
 `
 const Form = styled.form
 `
@@ -32,6 +41,9 @@ const Form = styled.form
  display:flex;
  justify-content:space-between;
  border:2px solid lightgray;
+ ${mobileM({width:"80%"})}
+ ${tablet({width:"70%"})}
+ 
 `
 const Input= styled.input
 `
@@ -39,6 +51,9 @@ background-color: transparent;
 border:none;
 flex:7;
 padding-left:20px;
+${mobileM({width:"80%", flex:"5"})}
+${tablet({width:"80%", flex:"6"})}
+
 `
 const Button = styled.button
 `

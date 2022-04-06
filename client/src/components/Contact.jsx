@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import emailjs from '@emailjs/browser';
-
+import {mobileM} from "../responsive"
+import {tablet} from "../responsive"
 
 const Container = styled.div`
 border-top:0.5px solid lightgray;
 position:relative;
 border-bottom:0.5px solid #736f6f;
+
 `
 const ContainerBg = styled.div`
 width:20px;
@@ -18,6 +20,8 @@ position:absolute;
 const ContainerWrapper = styled.div`
 padding:50px;
 display:flex;
+${mobileM({flexDirection:"column" ,padding:"40px" })}
+${tablet({flexDirection:"column" ,padding:"40px" })}
 `
 const Left = styled.div`
 flex:1;
@@ -28,6 +32,8 @@ font-size:28px;
 `
 const Info = styled.div`
 font-size: 18px;
+${mobileM({ marginBottom:"15px"})}
+${tablet({ marginBottom:"20px"})}
 `
 const InfoItem = styled.div`
 display:flex;
@@ -39,6 +45,8 @@ const Image = styled.img`
 width:150px;
 height:150px;
 margin-right:20px;
+${mobileM({ marginRight:"0px", height:"80px", width:"80px"})}
+${tablet({ marginRight:"0px", height:"90px", width:"90px"})}
 `
 const Right = styled.div`
 flex:1;
@@ -50,11 +58,14 @@ flex-direction:column;
 const DescP = styled.div`
 font-weight: 300;
 font-size:28px;
+${mobileM({fontSize:"24px", fontWeight:"400"  })}
+${tablet({fontSize:"24px", fontWeight:"400"  })}
 `
 const Form = styled.form`
 margin-top:30px;
 display:flex;
 flex-direction:column;
+${mobileM({marginTop:"10px" })}
 `
 
 const Input = styled.input`
@@ -123,7 +134,7 @@ const Contact = () => {
                 </Info>
             </Left>
             <Right>
-                <DescP><b>How can we help you ?</b> Get in touch. We are here for you 24/7</DescP>
+                <DescP><b>How can we help you ?</b> We are here for you 24/7, Get in touch! </DescP>
                 <Form ref={formRef} onSubmit={handleSubmit}>
                     <Input type="text" placeholder='Name' name='user_name' />
                     <Input type="text" placeholder='Subject' name='user_subject' />
