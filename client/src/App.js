@@ -36,14 +36,14 @@ function App() {
       </Routes>
       <Footer />
     </BrowserRouter>
-    <CookieConsent 
+     <CookieConsent 
     style={{ background: "#222" , opacity:"0.9", color:"#fff",  textAlign:"center", fontSize:"18px", }}
      buttonStyle={{backgroundColor:"#A47CA6", color: "#fff", fontSize: "16px" , fontWeight:"500", borderRadius:"8px"}}
      buttonText = "Ok Great!"
      expires={150}
     >We use cookies on this site to enhance your user experience.
     For a complete overview of all cookies used, please see our <a href="/privacy">Cookie policy.</a></CookieConsent>
-    <ScrollUpButton style={{backgroundColor:"#a47ca6"}}/>
+    <ScrollUpButton style={{backgroundColor:"#a47ca6"}}/> 
     </div>
   )
 }
