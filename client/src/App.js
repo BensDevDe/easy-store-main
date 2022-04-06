@@ -4,6 +4,10 @@ import Welcome from './pages/Welcome'
 import Navbar from './components/Navbar'
 import Home from './pages/Home.jsx'
 import Footer from './components/Footer'
+
+
+import AdminPage from './pages/AdminPage.js'
+
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Impressum from './pages/Impressum'
@@ -33,6 +37,9 @@ function App() {
         <Route path='/privacy' element={<Privacy/>} />
         <Route path='/terms' element={<Terms/>} />
         <Route path='/faq' element={<Faq/>} />
+
+        <Route path='/admin' element={<AdminPage />} />
+
       </Routes>
       <Footer />
     </BrowserRouter>
