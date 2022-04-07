@@ -40,6 +40,7 @@ export const login = (user) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
     }
 
     const { data } = await axios.post(API_URL + 'login', user, config)
@@ -61,14 +62,19 @@ export const login = (user) => async (dispatch) => {
   }
 }
 
-export const logout = () => (dispatch) => {
+export const logout = () => async (dispatch) => {
   localStorage.removeItem('userInfo')
+  try {
+    await axios.get(API_URL + 'logout', { withCredentials: true })
 
-  dispatch({ type: USER_LOGOUT })
-  dispatch({ type: USER_DETAILS_RESET })
+    dispatch({ type: USER_LOGOUT })
+    dispatch({ type: USER_DETAILS_RESET })
 
-  dispatch({ type: USER_LIST_RESET })
-  document.location.href = '/'
+    dispatch({ type: USER_LIST_RESET })
+    document.location.href = '/'
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export const register = (newUser) => async (dispatch) => {
@@ -296,4 +302,3 @@ export const updateUser = (user) => async (dispatch, getState) => {
     })
   }
 }
-
