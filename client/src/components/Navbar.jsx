@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Search } from '@material-ui/icons'
 import SignIn from './SignIn'
-import { logoutAction } from '../redux/actions/auth'
+import { logout } from '../redux/actions/auth'
 import Toggle from '../components/Toggle'
 import { Link } from 'react-router-dom'
 import {mobileS} from "../responsive"
@@ -100,13 +100,13 @@ const Navbar = () => {
 
   const dispatch = useDispatch()
 
-  const loggedUser = useSelector((state) => state.authReducer)
-  const { isLoggedIn } = loggedUser
+  const userLogin = useSelector((state) => state.userLogin)
+  const { loading, error, userInfo } = userLogin
 
-  console.log(isLoggedIn)
+ 
 
   const logoutHandler = () => {
-    dispatch(logoutAction())
+    dispatch(logout())
   }
 
   return (
@@ -127,16 +127,15 @@ const Navbar = () => {
           ></LogoDiv></Link>
         </Center>
         <Right>
-          {isLoggedIn ? (
+        {userInfo ? (
             <MenuItem>
-              {loggedUser.user.db_user.name.firstName}{' '}
-              {loggedUser.user.db_user.name.lastName}
+              {userInfo.db_user.name.firstName} {userInfo.db_user.name.lastName}
             </MenuItem>
           ) : (
             <MenuItem>Free Trial</MenuItem>
           )}
 
-          {isLoggedIn ? (
+          {userInfo ? (
             <MenuItem onClick={() => logoutHandler()}>Logout</MenuItem>
           ) : (
             <MenuItem onClick={() => showLogin()}>Login</MenuItem>

@@ -1,35 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import { loginAction } from '../redux/actions/auth'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { login } from '../redux/actions/auth'
 
 const SignIn = ({ isShowLogin, showLogin }) => {
-  const [newUser, setNewUser] = useState({
-    firstName: '',
-    lastName: '',
+  const [user, setUser] = useState({
     email: '',
-    street: '',
-    city: '',
-    postcode: '',
-    country: '',
     password: '',
   })
   const dispatch = useDispatch()
-  const  { isLoggedIn } = useSelector((state) => state.authReducer)
-  
+  const userLogin = useSelector((state) => state.userLogin)
+  const { loading, error, userInfo } = userLogin
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    dispatch(loginAction(newUser))
-  }
+  console.log(error);
+  console.log(isShowLogin);
 
   const navigate = useNavigate()
+  const location = useLocation();
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/')
-    }
-  }, [navigate, isLoggedIn])
+  const redirect = location.search ? location.search.split('=')[1] : '/'
+
+  // useEffect(() => {
+
+  //   if (userInfo) {
+  //       navigate(redirect)
+  //   }
+  // }, [loading])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(login(user))
+  }
 
   return (
     <div className={`${isShowLogin ? 'wrapper active' : 'wrapper show'}`}>
@@ -48,9 +49,9 @@ const SignIn = ({ isShowLogin, showLogin }) => {
               name='userName'
               id='userName'
               placeholder='Email'
-              value={newUser.email}
+              value={user.email}
               onChange={(e) =>
-                setNewUser({ ...newUser, email: e.target.value })
+                setUser({ ...user, email: e.target.value })
               }
             />{' '}
           </div>
@@ -62,9 +63,9 @@ const SignIn = ({ isShowLogin, showLogin }) => {
               name='password'
               id='pwd'
               placeholder='Password'
-              value={newUser.password}
+              value={user.password}
               onChange={(e) =>
-                setNewUser({ ...newUser, password: e.target.value })
+                setUser({ ...user, password: e.target.value })
               }
             />{' '}
           </div>{' '}
@@ -83,7 +84,8 @@ const SignIn = ({ isShowLogin, showLogin }) => {
             New to Easy-Store?{' '}
             <span>
               {' '}
-              <Link to='/signup'>Create an account </Link>{' '}
+              <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}> SignUp
+          </Link>
             </span>
           </p>{' '}
         </div>

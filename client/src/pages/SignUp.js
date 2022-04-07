@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import validator from 'validator'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { registerAction } from '../redux/actions/auth'
+import { register } from '../redux/actions/auth'
 
 import UserDetails from '../components/UserDetails'
 import PersonalDetails from '../components/PersonalDetails'
@@ -14,10 +15,7 @@ import { FaArrowRight } from 'react-icons/fa'
 
 import { FaArrowLeft } from 'react-icons/fa'
 
-
-
 const SignUp = () => {
-  const { darkMode } = useSelector((state) => state.themeReducer)
   const [newUser, setNewUser] = useState({
     firstName: '',
     lastName: '',
@@ -27,15 +25,66 @@ const SignUp = () => {
     postcode: '',
     country: '',
     password: '',
+    confirmPassword: '',
   })
 
+  const [messageEmail, setMessageEmail] = useState("")
+  const [messageConfirm, setMessagePasswordConfirm] = useState("")
+  const [messagePasswordLength, setMessagePasswordLength] = useState("")
+
+  console.log(messageEmail);
+  console.log(messageConfirm);
+  console.log(messagePasswordLength);
+
+  
+
   const [page, setPage] = useState(1)
+
+  const emailValidation = () => {
+    return validator.isEmail(newUser.email)
+  }
+  const passwordConfirm = () => {
+    const passConf = newUser.password !== newUser.confirmPassword ? false : true
+    return passConf
+  }
+
+
+
+  const passwordLengthValidation = () => {
+    return newUser.password < 8 ? false : true
+  }
 
   const nextPage = (e) => {
     e.preventDefault()
     const nextPage = page + 1
     setPage(nextPage)
+
+    // if (page === 1) {
+    //   const emailVal = emailValidation()
+    //   const passConfirm = passwordConfirm()
+    //   const passLength = passwordLengthValidation()
+    //   console.log(passConfirm);
+    //   if (!emailVal) {
+    //     setMessageEmail('Email is not valid')
+    //   } else if (emailVal) {
+    //     setMessageEmail("")
+    //   } else if (passConfirm === false) {
+    //     setMessagePasswordConfirm('Password do not match')
+    //   } else if (passConfirm) {
+    //     setMessagePasswordConfirm(null)
+    //   } else if (!passLength) {
+    //     setMessagePasswordLength('Password must have at least 8 characters')
+    //   } else {
+    //     const nextPage = page + 1
+    //     setPage(nextPage)
+    //   }
+    // } else if (page === 2) {
+    // } else {
+    // }
+
+   
   }
+
 
   const previousPage = (e) => {
     e.preventDefault()
@@ -47,7 +96,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    dispatch(registerAction(newUser))
+    dispatch(register(newUser))
 
     setPage(page + 1)
   }
@@ -59,11 +108,7 @@ const SignUp = () => {
   }
 
   return (
-    
-    <div className='signup-container' style={{
-      backgroundColor: darkMode ? '#222' : '#E8E8E8',
-      color: darkMode && '#DCDCDC',
-    }}>
+    <div className=' signup-container'>
       <div>
         <img src={process.env.PUBLIC_URL + '/Easy_Store_(4).png'} alt='logo' />
       </div>
@@ -91,6 +136,9 @@ const SignUp = () => {
               <UserDetails
                 newUser={newUser}
                 setNewUser={setNewUser}
+                messageEmail={messageEmail}
+                messageConfirm= {messageConfirm}
+                messagePasswordLength={messagePasswordLength}
                 nextPage={nextPage}
               />
             ) : page === 2 ? (

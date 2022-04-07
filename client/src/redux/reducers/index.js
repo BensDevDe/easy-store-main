@@ -1,9 +1,23 @@
 import { combineReducers } from 'redux'
-import authReducer from './auth'
-import messageReducer from './message'
-import themeReducer from "./theme"
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
+  userListReducer,
+  userDeleteReducer,
+  userUpdateReducer,
+} from './auth'
+import themeReducer from './theme'
 export default combineReducers({
-  authReducer,
-  messageReducer,
-  themeReducer
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
+  userList: userListReducer,
+  userDelete: userDeleteReducer,
+  userUpdate: userUpdateReducer,
+
+
+  themeReducer,
 })
