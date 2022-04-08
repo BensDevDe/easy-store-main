@@ -120,5 +120,71 @@ exports.loginController = async (req, res) => {
 
 //LOGOUT
 exports.logoutController = (req, res) => {
-  res.clearCookie('authenticated_token', 'CookieConsent').json({ msg: 'logged out successfully!' })
+  res
+    .clearCookie('authenticated_token', 'CookieConsent')
+    .json({ msg: 'logged out successfully!' })
+}
+
+// GET USER PROFIL
+
+exports.getUserProfileController = async (req, res) => {
+  const user = await UserModel.findById(req.user._id)
+  if (db_user) {
+    res.json({
+      firstName: user.name.firstName,
+      lastName: user.name.firstName,
+      street: user.address.street,
+      city: user.address.city,
+      postcode: user.address.postcode,
+      country: user.address.country,
+      email: user.email,
+      avatar: user.avatar,
+      role: user.role,
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+}
+
+exports.getUsersController = async (req, res) => {
+  const users = await UserModel.find({})
+  res.json(users)
+}
+
+exports.updateUserProfileController = async (req, res) => {
+  const user = await UserModel.findById(req.user._id)
+
+  if (user) {
+    user.name.firstName = req.body.firstName || user.name.firstName
+    user.name.lastName = req.body.lastName || user.name.lastName
+    user.email = req.body.email || user.email
+    user.address.street = req.body.street || user.address.street
+    user.address.city = req.body.city || user.address.city
+    user.address.postcode = req.body.postcode || user.address.postcode
+    user.address.country = req.body.country || user.address.country
+    user.avatar = req.body.avatar || user.avatar
+
+    if (req.body.password) {
+      user.password = req.body.password
+    }
+
+    const updatedUser = await user.save()
+
+    res.json({
+      firstName: user.name.firstName,
+      lastName: user.name.firstName,
+      email: user.email,
+      street: user.address.street,
+      city: user.address.city,
+      postcode: user.address.postcode,
+      country: user.address.country,
+      avatar: user.avatar,
+      role: user.role,
+      token: getToken(updatedUser._id),
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
 }
