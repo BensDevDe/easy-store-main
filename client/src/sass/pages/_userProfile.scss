@@ -1,0 +1,43 @@
+.profile-container {
+    width: 80%;
+   margin-left: 50px;
+   margin-top: 50px;
+  
+    .profile-login-container {
+      width: 40%;
+      margin-bottom: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align_items: center;
+  
+      .profile-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        h5 {
+          font-weight: 600;
+        }
+  
+      }
+  
+      
+  
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+  
+        color: $color-purple;
+        background: transparent;
+        border: none;
+  
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+  

@@ -129,7 +129,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/users/${id}`, config)
+    const { data } = await axios.get(`http://localhost:5001/user/${id}`, config)
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
@@ -167,7 +167,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`/api/users/profile`, user, config)
+    const { data } = await axios.put(API_URL + 'profile', user, config)
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
@@ -209,7 +209,7 @@ export const listUsers = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/users`, config)
+    const { data } = await axios.get(API_URL, config)
 
     dispatch({
       type: USER_LIST_SUCCESS,
@@ -281,7 +281,11 @@ export const updateUser = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`/api/users/${user._id}`, user, config)
+    const { data } = await axios.put(
+      `http://localhost:5001/user/${user._id}`,
+      user,
+      config
+    )
 
     dispatch({ type: USER_UPDATE_SUCCESS })
 

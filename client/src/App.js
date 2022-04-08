@@ -8,6 +8,8 @@ import Footer from './components/Footer'
 
 import AdminPage from './pages/AdminPage.js'
 
+import UserProfil from './components/UserProfile'
+
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Impressum from './pages/Impressum'
@@ -39,6 +41,8 @@ function App() {
         <Route path='/faq' element={<Faq/>} />
 
         <Route path='/admin' element={<AdminPage />} />
+
+        <Route path='/profil' element={<UserProfil />} />
 
       </Routes>
       <Footer />

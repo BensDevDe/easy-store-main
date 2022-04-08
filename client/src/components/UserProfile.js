@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails, updateUserProfile } from '../redux/actions/auth'
 import { useNavigate } from 'react-router-dom'
 
-const Profil = () => {
+const Profile = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -17,7 +17,10 @@ const Profil = () => {
     city: '',
     postcode: '',
     country: '',
+    avatar: '',
   })
+
+  console.log(userUpdate)
   const [message, setMessage] = useState(null)
 
   const [editEnabled, setEditEnabled] = useState(true)
@@ -57,17 +60,17 @@ const Profil = () => {
     if (userUpdate.password !== userUpdate.confirmPassword) {
       setMessage('Passwords do not match')
     } else {
-      // dispatch(updateUserProfile({ id: user._id, name , email, password }))
+      dispatch(updateUserProfile(userUpdate))
     }
   }
   return (
-    <div className='profil-container'>
-      <div className='profil-login-container'>
-        <div className='profil-head'>
+    <div className='profile-container'>
+      <div className='profile-login-container'>
+        <div className='profile-head'>
           <h5>Login & Security</h5>
           <button onClick={() => enableEdit()}>Edit</button>
         </div>
-        <form class='form-group-sm'>
+        <form class='form-group-sm' onSubmit={submitHandler}>
           <div>
             <label>First Name:</label>
             <input
@@ -75,6 +78,9 @@ const Profil = () => {
               className='form-control'
               id='firstName'
               value={userUpdate.firstName}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, firstName: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -86,6 +92,9 @@ const Profil = () => {
               className='form-control'
               id='lastName'
               value={userUpdate.lastName}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, lastName: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -97,6 +106,9 @@ const Profil = () => {
               className='form-control'
               id='email'
               value={userUpdate.email}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, email: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -109,6 +121,9 @@ const Profil = () => {
               id='password'
               placeholder='xxxxxxxx'
               value={userUpdate.password}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, password: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -129,12 +144,12 @@ const Profil = () => {
         </form>
       </div>
 
-      <div className='profil-login-container'>
+      <div className='profile-login-container'>
         <div className='profil-head'>
           <h5>Personal Details</h5>
           <button onClick={() => enableEdit()}>Edit</button>
         </div>
-        <form class='form-group-sm'>
+        <form class='form-group-sm' onSubmit={submitHandler}>
           <div>
             <label>Street</label>
             <input
@@ -142,6 +157,9 @@ const Profil = () => {
               className='form-control'
               id='street'
               value={userUpdate.street}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, street: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -153,6 +171,9 @@ const Profil = () => {
               className='form-control'
               id='city'
               value={userUpdate.city}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, city: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -164,6 +185,9 @@ const Profil = () => {
               className='form-control'
               id='zip'
               value={userUpdate.postcode}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, postcode: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -175,6 +199,9 @@ const Profil = () => {
               className='form-control'
               id='country'
               value={userUpdate.country}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, country: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -187,4 +214,4 @@ const Profil = () => {
   )
 }
 
-export default Profil
+export default Profile
