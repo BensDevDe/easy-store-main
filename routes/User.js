@@ -19,7 +19,7 @@ router.post('/login', loginController)
 router.get('/logout', logoutController)
 
 router
-  .get('./profile', protect, getUserProfileController)
-  .put(protect, updateUserProfileController)
+  .get('/profile', protect, getUserProfileController)
+  .put('/profile',protect, updateUserProfileController)
 
 module.exports = router

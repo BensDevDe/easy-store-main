@@ -31,7 +31,7 @@ const userSchema = new Schema({
     type: String,
     unique: true,
   },
-})
+}, {timestamps: true})
 const UserModel = model('User', userSchema)
 
 UserModel.comparePass = async function (givenPassword, userPassword) {

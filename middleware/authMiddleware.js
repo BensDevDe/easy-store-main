@@ -1,50 +1,30 @@
-const UserModel = require('../models/UserModel')
+const User = require('../models/UserModel')
 const jwt = require('jsonwebtoken')
 
-exports.protect = (req, res, next) => {
-  console.log('kjkjlkjlkj')
-  const token = req.cookies.authenticated_token
-  if (!token) {
-    return res
-      .status(403)
-      .json({ errMsg: 'you are a not valid user, please login!' })
+
+
+ exports.protect = async (req,res,next) => {
+  console.log("PROTECT: ENTERED")
+  let token ;
+  console.log(req.headers.authorization);
+  // returns Bearer andthetokencomeshere
+
+  if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) { 
+      try{
+          token = req.headers.authorization.split(" ")[1];
+          const decoded = jwt.verify(token, process.env.JWT_SECRET );
+          // if decoded doesn't work, an error will be thrown => and it will be caught 
+          console.log(decoded);
+          // decoded {id: "...", iat: "...", exp: "...."}
+
+          // req.user is undefined before i define it 
+          // find the user but don't get the password! 
+          req.user = await User.findById(decoded.id).select("-password"); 
+          next();
+      }catch(error){
+          console.error(error);
+          res.status(401);
+          throw new Error("Not authorized , token failed!")
+      }
   }
-
-
-  const decodedUser = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-  req.decodedUser = decodedUser
-
-  next()
-
-  // let token
-  // if (
-  //     req.headers.authorization &&
-  //     req.headers.authorization.startsWith('Bearer')
-  //   ) {
-  //     try {
-  //         token = req.headers.authorization.split(' ')[1]
-  //         const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-
-  //         req.user = await UserModel.findById(decoded.id).select('-password')
-
-  //         next()
-  //     } catch (error) {
-  //         console.error(error);
-  //         res.status(401)
-  //         throw new Error ('Not authorized, token failed')
-  //     }
-  // }
-  // if(!token){
-  //     res.status(401)
-  //     throw new Error('Not authorized, no token')
-  // }
 }
-
-// exports.admin = (req, res, next) => {
-//   if (req.user && req.user.isAdmin) {
-//     next()
-//   } else {
-//     res.status(401)
-//     throw new Error('Not authorized as an admin')
-//   }
-// }

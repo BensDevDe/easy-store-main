@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt')
 const UserModel = require('../models/UserModel')
 const jwt = require('jsonwebtoken')
-
 const getToken = require('../helpers/jwt')
 const sendEmail = require('../config/sendEmail')
 
@@ -86,9 +85,12 @@ exports.verifyUserController = async (req, res) => {
 
 //LOGIN
 exports.loginController = async (req, res) => {
-  const { email, password } = req.body
   try {
+    const { email, password } = req.body
+  
     const db_user = await UserModel.findOne({ email })
+
+
     if (!db_user) {
       return res
         .status(404)
@@ -99,21 +101,27 @@ exports.loginController = async (req, res) => {
         message: 'Pending Account. Please Verify Your Email!',
       })
     }
-    console.log(UserModel)
-    const validUser = await UserModel.comparePass(password, db_user.password)
-    if (!validUser) {
-      return res.status(500).json({ msg: 'password incorrect' })
-    }
-
-    const token = await getToken(db_user)
-    console.log(token)
-
-    return res
+   
+    if (db_user && await UserModel.comparePass(password, db_user.password)){  
+      console.log(db_user._id);  
+      const token = getToken(db_user._id);
+      return res
       .status(200)
       .cookie('authenticated_token', token, { httpOnly: true, secure: true })
-      .json({ msg: ' user logged in successfully', db_user })
+      .json({
+        _id: db_user._id, 
+        name: db_user.name, 
+        email: db_user.email,
+        isAdmin: db_user.isAdmin,
+        //  token will change later
+        token
+      })
+    }else{
+      res.status(401).send("invalid email or password")
+    }
   } catch (err) {
-    console.log(err)
+    console.log("there was an error");
+    console.log(err);
     res.status(500).json(err)
   }
 }
@@ -128,8 +136,10 @@ exports.logoutController = (req, res) => {
 // GET USER PROFIL
 
 exports.getUserProfileController = async (req, res) => {
+  console.log("the req user is");
+  console.log(req);
   const user = await UserModel.findById(req.user._id)
-  if (db_user) {
+  if (user) {
     res.json({
       firstName: user.name.firstName,
       lastName: user.name.firstName,
@@ -153,6 +163,8 @@ exports.getUsersController = async (req, res) => {
 }
 
 exports.updateUserProfileController = async (req, res) => {
+  console.log(req.user);
+  
   const user = await UserModel.findById(req.user._id)
 
   if (user) {

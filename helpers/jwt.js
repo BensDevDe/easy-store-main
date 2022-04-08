@@ -1,22 +1,13 @@
 const jwt = require("jsonwebtoken");
 
-const getToken = (db_user) => {
-  const payload = { userId: db_user._id, email: db_user.email };
+//  userid is the id, becasue i will use it as a payload in the token 
+const getToken = (id) => {
+     return jwt.sign({id}, process.env.JWT_SECRET, {
+         expiresIn: "30d"
+     })
+ }
 
-  return new Promise((resolve, reject) => {
-    jwt.sign(
-      payload,
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "1h" },
-      (err, token) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(token);
-      }
-    );
-  });
-};
+//  when will the token expire?
+// 30d equals => 30 days
 
 module.exports = getToken;
