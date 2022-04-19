@@ -67,7 +67,7 @@ const Profile = () => {
               id='firstName'
               value={user.firstName}
               // onChange={(e) =>
-              //   console.log({ ...userUpdate, firstName: e.target.value })
+              //   setUser({ ...userUpdate, firstName: e.target.value })
               // }
               disabled={editEnabled ? 'disabled' : ''}
               required
@@ -133,7 +133,7 @@ const Profile = () => {
       </div>
 
       <div className='profile-login-container'>
-        <div className='profil-head'>
+        <div className='profile-head'>
           <h5>Personal Details</h5>
           <button onClick={() => enableEdit()}>Edit</button>
         </div>

@@ -168,8 +168,8 @@
   padding: 40px 30px 30px 30px;
   background-color: #A47CA6;
   border-radius: 0.25rem;
-  -webkit-box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
-          box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+  -webkit-box-shadow: 2px 2px 2px #cbced1, -2px -2px 2px #fff;
+          box-shadow: 2px 2px 2px #cbced1, -2px -2px 2px #fff;
   z-index: 999;
   position: fixed;
   right: 10%;
