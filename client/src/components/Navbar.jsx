@@ -129,7 +129,7 @@ const Navbar = () => {
         <Right>
         {userInfo ? (
             <MenuItem>
-              {userInfo.db_user.name.firstName} {userInfo.db_user.name.lastName}
+              {userInfo.firstName} {userInfo.lastName}
             </MenuItem>
           ) : (
             <MenuItem>Free Trial</MenuItem>
