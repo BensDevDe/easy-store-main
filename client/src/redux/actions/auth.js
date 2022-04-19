@@ -64,6 +64,7 @@ export const login = (user) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   localStorage.removeItem('userInfo')
+  localStorage.removeItem('user')
   try {
     await axios.get(API_URL + 'logout', { withCredentials: true })
 
@@ -113,28 +114,22 @@ export const register = (newUser) => async (dispatch) => {
   }
 }
 
-export const getUserDetails = (id) => async (dispatch, getState) => {
+export const getUserDetails = (id) => async (dispatch) => {
   try {
+    const { data } = await axios.get(
+      `http://localhost:5001/user/profile/${id}`,
+      {
+        withCredentials: true,
+      }
+    )
     dispatch({
       type: USER_DETAILS_REQUEST,
     })
-
-    const {
-      userLogin: { userInfo },
-    } = getState()
-
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
-
-    const { data } = await axios.get(`http://localhost:5001/user/${id}`, config)
-
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data,
     })
+    localStorage.setItem('user', JSON.stringify(data))
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -150,24 +145,12 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
   }
 }
 
-export const updateUserProfile = (user) => async (dispatch, getState) => {
+export const updateUserProfile = (user) => async (dispatch) => {
   try {
+    const { data } = await axios.put(API_URL + 'profile/update', user)
     dispatch({
       type: USER_UPDATE_PROFILE_REQUEST,
     })
-
-    const {
-      userLogin: { userInfo },
-    } = getState()
-
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
-
-    const { data } = await axios.put(API_URL + 'profile', user, config)
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,

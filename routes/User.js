@@ -18,8 +18,8 @@ router.get('/register/confirm/:confirmationCode', verifyUserController)
 router.post('/login', loginController)
 router.get('/logout', logoutController)
 
-router
-  .get('./profile', protect, getUserProfileController)
-  .put(protect, updateUserProfileController)
+router.get('/profile/:id', getUserProfileController)
+
+// .put('/profile', updateUserProfileController)
 
 module.exports = router

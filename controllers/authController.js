@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt')
 const UserModel = require('../models/UserModel')
 const jwt = require('jsonwebtoken')
-
 const getToken = require('../helpers/jwt')
 const sendEmail = require('../config/sendEmail')
 
@@ -99,19 +98,35 @@ exports.loginController = async (req, res) => {
         message: 'Pending Account. Please Verify Your Email!',
       })
     }
-    console.log(UserModel)
-    const validUser = await UserModel.comparePass(password, db_user.password)
-    if (!validUser) {
-      return res.status(500).json({ msg: 'password incorrect' })
+
+    // const validUser = await UserModel.comparePass(password, db_user.password)
+    // if (!validUser) {
+    //   return res.status(500).json({ msg: 'password incorrect' })
+    // }
+    // const token = await getToken(db_user._id)
+
+    // return res
+    //   .status(200)
+    //   .cookie('authenticated_token', token, { httpOnly: true, secure: true })
+    //   .json({ msg: ' user logged in successfully', db_user })
+
+    if (db_user && (await UserModel.comparePass(password, db_user.password))) {
+      console.log(db_user._id)
+      const token = getToken(db_user._id)
+      return res
+        .status(200)
+        .cookie('authenticated_token', token, { httpOnly: true, secure: true })
+        .json({
+          _id: db_user._id,
+          firstName: db_user.name.firstName,
+          lastName: db_user.name.lastName,
+          email: db_user.email,
+          role: db_user.role,
+          token,
+        })
+    } else {
+      res.status(401).send('invalid email or password')
     }
-
-    const token = await getToken(db_user)
-    console.log(token)
-
-    return res
-      .status(200)
-      .cookie('authenticated_token', token, { httpOnly: true, secure: true })
-      .json({ msg: ' user logged in successfully', db_user })
   } catch (err) {
     console.log(err)
     res.status(500).json(err)
@@ -128,22 +143,25 @@ exports.logoutController = (req, res) => {
 // GET USER PROFIL
 
 exports.getUserProfileController = async (req, res) => {
-  const user = await UserModel.findById(req.user._id)
-  if (db_user) {
-    res.json({
-      firstName: user.name.firstName,
-      lastName: user.name.firstName,
-      street: user.address.street,
-      city: user.address.city,
-      postcode: user.address.postcode,
-      country: user.address.country,
-      email: user.email,
-      avatar: user.avatar,
-      role: user.role,
-    })
-  } else {
+  try {
+    const { id } = req.params
+    const user = await UserModel.findById(id)
+    if (user) {
+      res.status(200).json({
+        firstName: user.name.firstName,
+        lastName: user.name.firstName,
+        street: user.address.street,
+        city: user.address.city,
+        postcode: user.address.postcode,
+        country: user.address.country,
+        email: user.email,
+        avatar: user.avatar,
+        role: user.role,
+      })
+    }
+  } catch (error) {
     res.status(404)
-    throw new Error('User not found')
+    console.log(error)
   }
 }
 
@@ -153,37 +171,40 @@ exports.getUsersController = async (req, res) => {
 }
 
 exports.updateUserProfileController = async (req, res) => {
-  const user = await UserModel.findById(req.user._id)
+  try {
+    const { id } = req.params
+    const user = await UserModel.findById(id)
 
-  if (user) {
-    user.name.firstName = req.body.firstName || user.name.firstName
-    user.name.lastName = req.body.lastName || user.name.lastName
-    user.email = req.body.email || user.email
-    user.address.street = req.body.street || user.address.street
-    user.address.city = req.body.city || user.address.city
-    user.address.postcode = req.body.postcode || user.address.postcode
-    user.address.country = req.body.country || user.address.country
-    user.avatar = req.body.avatar || user.avatar
+    if (user) {
+      user.name.firstName = req.body.firstName || user.name.firstName
+      user.name.lastName = req.body.lastName || user.name.lastName
+      user.email = req.body.email || user.email
+      user.address.street = req.body.street || user.address.street
+      user.address.city = req.body.city || user.address.city
+      user.address.postcode = req.body.postcode || user.address.postcode
+      user.address.country = req.body.country || user.address.country
+      user.avatar = req.body.avatar || user.avatar
 
-    if (req.body.password) {
-      user.password = req.body.password
+      if (req.body.password) {
+        user.password = req.body.password
+      }
+
+      const updatedUser = await user.save()
+
+      res.json({
+        firstName: user.name.firstName,
+        lastName: user.name.firstName,
+        email: user.email,
+        street: user.address.street,
+        city: user.address.city,
+        postcode: user.address.postcode,
+        country: user.address.country,
+        avatar: user.avatar,
+        role: user.role,
+        token: getToken(updatedUser._id),
+      })
     }
-
-    const updatedUser = await user.save()
-
-    res.json({
-      firstName: user.name.firstName,
-      lastName: user.name.firstName,
-      email: user.email,
-      street: user.address.street,
-      city: user.address.city,
-      postcode: user.address.postcode,
-      country: user.address.country,
-      avatar: user.avatar,
-      role: user.role,
-      token: getToken(updatedUser._id),
-    })
-  } else {
+  } catch (error) {
     res.status(404)
     throw new Error('User not found')
   }
