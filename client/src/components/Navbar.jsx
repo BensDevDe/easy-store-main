@@ -134,7 +134,7 @@ const Navbar = () => {
         </Center>
         <Right>
           {userInfo ? (
-            <MenuItem onClick={() => navigate('/admin')}>
+            <MenuItem onClick={() => navigate('/dashboard/home')}>
               {userInfo.firstName} {userInfo.lastName}
             </MenuItem>
           ) : (
