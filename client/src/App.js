@@ -5,7 +5,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home.jsx'
 import Footer from './components/Footer'
 
-import AdminPage from './pages/AdminPage.js'
+import Dashboard from './pages/Dashboard.js'
 
 import UserProfile from './components/UserProfile'
 
@@ -41,7 +41,7 @@ function App() {
           <Route path='/terms' element={<Terms />} />
           <Route path='/faq' element={<Faq />} />
 
-          <Route path='/admin' element={<AdminPage />} />
+          <Route path='/dashboard/:id' element={<Dashboard />} />
 
           <Route path='/profile' element={<UserProfile />} />
         </Routes>
