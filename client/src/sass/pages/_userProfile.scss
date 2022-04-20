@@ -3,7 +3,7 @@
    margin-left: 50px;
    margin-top: 50px;
   
-    .profile-login-container {
+    .profile-box {
       width: 40%;
       margin-bottom: 100px;
       display: flex;
@@ -37,6 +37,10 @@
         &:hover {
           opacity: 0.5;
         }
+      }
+
+      img {
+        width: 40%;
       }
     }
   }
