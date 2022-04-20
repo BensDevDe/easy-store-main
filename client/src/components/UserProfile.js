@@ -53,7 +53,7 @@ const Profile = () => {
   }
   return (
     <div className='profile-container'>
-      <div className='profile-login-container'>
+      <div className='profile-box'>
         <div className='profile-head'>
           <h5>Login & Security</h5>
           <button onClick={() => enableEdit()}>Edit</button>
@@ -132,7 +132,7 @@ const Profile = () => {
         </form>
       </div>
 
-      <div className='profile-login-container'>
+      <div className='profile-box'>
         <div className='profile-head'>
           <h5>Personal Details</h5>
           <button onClick={() => enableEdit()}>Edit</button>
@@ -197,6 +197,20 @@ const Profile = () => {
 
           <button type='submit'>Save</button>
         </form>
+      </div>
+
+      <div className='profile-box'>
+        <div className='profile-head'>
+          <h5>Profil Image</h5>
+          <button onClick={() => enableEdit()}>Edit</button>
+        </div>
+        <div>
+          <h6>{user.firstName} {user.lastName}</h6>
+          <img
+            src={process.env.PUBLIC_URL + '/images/dummy-profile-pic.png'}
+            alt='Profil Picture'
+          />{' '}
+        </div>
       </div>
     </div>
   )
