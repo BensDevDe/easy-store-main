@@ -20,18 +20,24 @@ const Sidebar = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink exact to="/dashboard/dashboard" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink to="/dashboard/templates" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="columns">Template</CDBSidebarMenuItem>
-            </NavLink>
             <NavLink exact to="/dashboard/profile" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/dashboard/analytics" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="chart-line">Analytics</CDBSidebarMenuItem>
             </NavLink>
+            <NavLink to="/dashboard/templates" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="columns">Templates</CDBSidebarMenuItem>
+            </NavLink>
+            <h5 className='ps-4 my-5'>Edit Template</h5>
+            <NavLink to="/dashboard/templates" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="columns">Navbar</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink to="/dashboard/templates" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="columns">Footer</CDBSidebarMenuItem>
+            </NavLink>
+
+
           </CDBSidebarMenu>
         </CDBSidebarContent>
       </CDBSidebar>

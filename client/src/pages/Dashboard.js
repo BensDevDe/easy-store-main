@@ -8,10 +8,10 @@ const Dashboard = () => {
     <div className='my-3' style={{backgroundColor: 'rgb(242, 242, 242)'}}>
       <Container fluid>
         <Row>
-            <Col className='dashboard-menu col-4'>
+            <Col className='dashboard-menu col-md-3 col-lg-2'>
                 <Sidebar />
             </Col>
-            <Col className='dashboard-main col-8 pt-2'>
+            <Col className='dashboard-main col-md-9 col-lg-10 pt-2'>
                 <MainDashboardContent/>
             </Col>
         </Row>
