@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails, updateUserProfile } from '../redux/actions/auth'
@@ -8,6 +6,21 @@ import { useNavigate } from 'react-router-dom'
 const Profile = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const [editEnabled, setEditEnabled] = useState(true)
+  const enableEdit = () => {
+    setEditEnabled((editEnabled) => !editEnabled)
+  }
+  const [message, setMessage] = useState(null)
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
+  const userDetails = useSelector((state) => state.userDetails)
+  const { loading, error, user } = userDetails
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
+  const { success } = userUpdateProfile
 
   const [userUpdate, setUserUpdate] = useState({
     firstName: '',
@@ -21,21 +34,6 @@ const Profile = () => {
     country: '',
     avatar: '',
   })
-  const [editEnabled, setEditEnabled] = useState(true)
-  const enableEdit = () => {
-    setEditEnabled((editEnabled) => !editEnabled)
-  }
-  const [message, setMessage] = useState(null)
-
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
-
-  const userDetails = useSelector((state) => state.userDetails)
-  const { loading, error, user } = userDetails
-  console.log(user)
-
-  const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
-  const { success } = userUpdateProfile
 
   useEffect(() => {
     if (!userInfo) {
@@ -44,6 +42,23 @@ const Profile = () => {
       dispatch(getUserDetails(userInfo._id))
     }
   }, [])
+
+  useEffect(() => {
+    setUserUpdate({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: '',
+      confirmPassword: '',
+      street: user.street,
+      city: user.city,
+      postcode: user.postcode,
+      country: user.country,
+      avatar: user.avatar,
+    })
+  }, [user])
+
+  console.log('userUpdate', userUpdate)
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -67,24 +82,24 @@ const Profile = () => {
               type='text'
               className='form-control'
               id='firstName'
-              value={user.firstName}
-              // onChange={(e) =>
-              //   setUser({ ...userUpdate, firstName: e.target.value })
-              // }
+              value={userUpdate.firstName || ''}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, firstName: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
           </div>
           <div>
-            <label>Last Name:</label>
+            <label>Last Name: </label>
             <input
               type='text'
               className='form-control'
               id='lastName'
-              value={user.lastName}
-              // onChange={(e) =>
-              //   setUserUpdate({ ...userUpdate, lastName: e.target.value })
-              // }
+              value={userUpdate.lastName || ''}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, lastName: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -95,10 +110,10 @@ const Profile = () => {
               type='email'
               className='form-control'
               id='email'
-              value={user.email}
-              // onChange={(e) =>
-              //   setUserUpdate({ ...userUpdate, email: e.target.value })
-              // }
+              value={userUpdate.email || ''}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, email: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -110,10 +125,10 @@ const Profile = () => {
               className='form-control'
               id='password'
               placeholder='xxxxxxxx'
-              value={user.password}
-              // onChange={(e) =>
-              //   setUserUpdate({ ...userUpdate, password: e.target.value })
-              // }
+              value={userUpdate.password || ''}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, password: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -125,7 +140,7 @@ const Profile = () => {
               className='form-control'
               id='password-confirm'
               placeholder='xxxxxxxx'
-              value={user.confirmPassword}
+              value={userUpdate.confirmPassword || ''}
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -146,10 +161,10 @@ const Profile = () => {
               type='text'
               className='form-control'
               id='street'
-              value={user.street}
-              // onChange={(e) =>
-              //   setUserUpdate({ ...userUpdate, street: e.target.value })
-              // }
+              value={userUpdate.street || ''}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, street: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -160,10 +175,10 @@ const Profile = () => {
               type='text'
               className='form-control'
               id='city'
-              value={user.city}
-              // onChange={(e) =>
-              //   setUserUpdate({ ...userUpdate, city: e.target.value })
-              // }
+              value={userUpdate.city || ''}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, city: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -174,10 +189,10 @@ const Profile = () => {
               type='text'
               className='form-control'
               id='zip'
-              value={user.postcode}
-              // onChange={(e) =>
-              //   setUserUpdate({ ...userUpdate, postcode: e.target.value })
-              // }
+              value={userUpdate.postcode || ''}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, postcode: e.target.value })
+              }
               disabled={editEnabled ? 'disabled' : ''}
               required
             />
@@ -188,7 +203,7 @@ const Profile = () => {
               type='country'
               className='form-control'
               id='country'
-              value={user.country}
+              value={userUpdate.country || ''}
               onChange={(e) =>
                 setUserUpdate({ ...userUpdate, country: e.target.value })
               }
@@ -207,18 +222,33 @@ const Profile = () => {
           <button onClick={() => enableEdit()}>Edit</button>
         </div>
         <div>
-          <h6>{user.firstName} {user.lastName}</h6>
+          <h6>
+            {user.firstName} {user.lastName}
+          </h6>
           <img
             src={process.env.PUBLIC_URL + '/images/dummy-profile-pic.png'}
             alt='Profil Picture'
           />{' '}
         </div>
+        <form className='form-group-sm'>
+          <div>
+            <label>Upload Picture</label>
+            <input
+              type='file'
+              className='form-control'
+              id='avatar'
+              disabled={editEnabled ? 'disabled' : ''}
+              onChange={(e) =>
+                setUserUpdate({ ...userUpdate, avatar: e.target.value })
+              }
+            />
+          </div>
+
+          <button type='submit'>Save</button>
+        </form>
       </div>
     </div>
   )
 }
 
 export default Profile
-
-// const userLogin = useSelector((state) => state.userLogin)
-// const { userInfo } = userLogin
