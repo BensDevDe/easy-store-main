@@ -1,6 +1,8 @@
 import {useParams} from "react-router-dom"
 import Templates from '../pages/Templates'
 import Profile from '../pages/Profile'
+import NavbarEdit from '../pages/NavbarEdit'
+import FooterEdit from '../pages/FooterEdit'
 import { Container } from 'react-bootstrap'
 
 const MainDashboardContent = () => {
@@ -18,6 +20,10 @@ const MainDashboardContent = () => {
         <Templates/>
         ) : params.id === 'profile' ? (
           <Profile/>
+          ) : params.id === 'navbarEdit' ? (
+            <NavbarEdit/>
+            ) : params.id === 'footerEdit' ? (
+              <FooterEdit/>
         ) : (
           <h1>Welcome</h1>
         )

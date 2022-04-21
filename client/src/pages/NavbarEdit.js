@@ -2,7 +2,9 @@ import React from 'react'
 
 const NavbarEdit = () => {
   return (
-    <div>NavbarEdit</div>
+    <div>
+        Personalize your Navbar
+    </div>
   )
 }
 
