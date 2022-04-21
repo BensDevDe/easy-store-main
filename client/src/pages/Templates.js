@@ -4,7 +4,7 @@ import {  Row, Col, Form, Button} from 'react-bootstrap'
 const Templates = () => {
   return (
     <div className='my-3' style={{width: '80vw'}}>
-      <Row className='justify-content-center'>
+      <Row className='justify-content-center mx-5'>
         <Col>
         <h4 className='mt-2 mb-3'>Select your E-Commerce Template</h4>
         <h5>All templates have shared features such as:</h5>

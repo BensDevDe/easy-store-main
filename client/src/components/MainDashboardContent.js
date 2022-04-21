@@ -14,7 +14,7 @@ const MainDashboardContent = () => {
 
   return (
     <Container className='mx-3 mt-3'>
-      <h2>{params.id.length !== 0 ? capitalizeFirstLetter(params.id) : 'Home'}</h2>
+      <h2 className="ms-5 mt-3">{params.id.length !== 0 ? capitalizeFirstLetter(params.id) : 'Home'}</h2>
       {
         (params.id === 'templates') ? (
         <Templates/>
