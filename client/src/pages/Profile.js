@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 const Profile = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
+  // useEffect fetch userData
+  //   --> set state with data from the api call
   const [editEnabled, setEditEnabled] = useState(true)
   const enableEdit = () => {
     setEditEnabled((editEnabled) => !editEnabled)
@@ -27,7 +28,6 @@ const Profile = () => {
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: '',
     street: '',
     city: '',
     postcode: '',
@@ -62,11 +62,11 @@ const Profile = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    if (userUpdate.password !== userUpdate.confirmPassword) {
-      setMessage('Passwords do not match')
-    } else {
-      dispatch(updateUserProfile({ id: user.db_user._id, userUpdate }))
-    }
+    // if (userUpdate.password !== userUpdate.confirmPassword) {
+    //   setMessage('Passwords do not match')
+    // } else {
+      dispatch(updateUserProfile( userInfo._id, userUpdate ))
+    // }
   }
   return (
     <div className='profile-container'>
@@ -130,7 +130,7 @@ const Profile = () => {
                 setUserUpdate({ ...userUpdate, password: e.target.value })
               }
               disabled={editEnabled ? 'disabled' : ''}
-              required
+              // required
             />
           </div>
           <div>
@@ -140,9 +140,8 @@ const Profile = () => {
               className='form-control'
               id='password-confirm'
               placeholder='xxxxxxxx'
-              value={userUpdate.confirmPassword || ''}
               disabled={editEnabled ? 'disabled' : ''}
-              required
+              // required
             />
           </div>
           <button type='submit'>Save</button>

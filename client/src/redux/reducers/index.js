@@ -14,9 +14,9 @@ export default combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
-  userList: userListReducer,
-  userDelete: userDeleteReducer,
-  userUpdate: userUpdateReducer,
+  // userList: userListReducer,
+  // userDelete: userDeleteReducer,
+  // userUpdate: userUpdateReducer,
 
 
   themeReducer,

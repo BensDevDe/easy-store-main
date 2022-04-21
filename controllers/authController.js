@@ -165,14 +165,13 @@ exports.getUserProfileController = async (req, res) => {
   }
 }
 
-exports.getUsersController = async (req, res) => {
-  const users = await UserModel.find({})
-  res.json(users)
-}
+//UPDATE USER_PROFILE
 
 exports.updateUserProfileController = async (req, res) => {
   try {
     const { id } = req.params
+    console.log(id)
+    console.log('req', req.params)
     const user = await UserModel.findById(id)
 
     if (user) {
@@ -190,17 +189,10 @@ exports.updateUserProfileController = async (req, res) => {
       }
 
       const updatedUser = await user.save()
+      console.log(req.body)
+      res.status(200).json({
+        ...req.body,
 
-      res.json({
-        firstName: user.name.firstName,
-        lastName: user.name.firstName,
-        email: user.email,
-        street: user.address.street,
-        city: user.address.city,
-        postcode: user.address.postcode,
-        country: user.address.country,
-        avatar: user.avatar,
-        role: user.role,
         token: getToken(updatedUser._id),
       })
     }
@@ -208,4 +200,51 @@ exports.updateUserProfileController = async (req, res) => {
     res.status(404)
     throw new Error('User not found')
   }
+}
+
+// UPLOAD PROFILE PICTURE
+
+exports.uploadController = async (req, res) => {
+  const imagePath = '/uploads/' + req.file.filename
+
+  try {
+    const { id } = req.params
+
+    const user = await UserModel.findById(id)
+
+    if (user) {
+      user.name.firstName = req.body.firstName || user.name.firstName
+      user.name.lastName = req.body.lastName || user.name.lastName
+      user.email = req.body.email || user.email
+      user.address.street = req.body.street || user.address.street
+      user.address.city = req.body.city || user.address.city
+      user.address.postcode = req.body.postcode || user.address.postcode
+      user.address.country = req.body.country || user.address.country
+      user.avatar = imagePath
+
+      if (req.body.password) {
+        user.password = req.body.password
+      }
+
+      const updatedUser = await user.save()
+
+      res.status(200).json({
+        firstName: user.name.firstName,
+        lastName: user.name.firstName,
+        email: user.email,
+        street: user.address.street,
+        city: user.address.city,
+        postcode: user.address.postcode,
+        country: user.address.country,
+        avatar: imagePath,
+        role: user.role,
+        token: getToken(updatedUser._id),
+      })
+    }
+  } catch (error) {
+    res.status(404)
+    throw new Error('ImageUpload not possible, user not found')
+  }
+
+  return res.status(200).json({ msg: 'your image upload was successfull', img })
 }
