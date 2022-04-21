@@ -5,7 +5,7 @@ import { MdMenu, MdManageAccounts, MdAnalytics, MdMonitor, MdEdit } from "react-
 const Sidebar = () => {
   return (
     <section className='ps-2 ps-md-4 my-3 py-3' 
-    style={{backgroundColor: '#A47CA6', width: '15vw', height: '90vh', borderRadius: '10px' }}>
+    style={{backgroundColor: '#A47CA6', width: '15vw', height: '100vh', borderRadius: '10px' }}>
             <h4 className='py-3'><MdMenu className='me-2'/>Menu</h4>
             <Link  to='/dashboard/profile' className='text-decoration-none'><p className='text-light fs-5'><MdManageAccounts className='me-2'/>Profile</p></Link>
             {/* <Link to='/dashboard/analytics'  className='text-decoration-none'><p className='text-light fs-5'><MdAnalytics className='me-2'/>Analytics</p></Link> */}
