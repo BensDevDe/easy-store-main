@@ -145,9 +145,13 @@ export const getUserDetails = (id) => async (dispatch) => {
   }
 }
 
-export const updateUserProfile = (user) => async (dispatch) => {
+export const updateUserProfile = (id, user) => async (dispatch) => {
+  console.log('id', id)
+  console.log('user', user)
+
   try {
-    const { data } = await axios.put(API_URL + 'profile/update', user)
+    const data = await axios.put(API_URL + `profile/update/${id}`, user)
+
     dispatch({
       type: USER_UPDATE_PROFILE_REQUEST,
     })
@@ -160,7 +164,7 @@ export const updateUserProfile = (user) => async (dispatch) => {
       type: USER_LOGIN_SUCCESS,
       payload: data,
     })
-    localStorage.setItem('userInfo', JSON.stringify(data))
+    localStorage.setItem('user', JSON.stringify(data))
   } catch (error) {
     const message =
       error.response && error.response.data.message
