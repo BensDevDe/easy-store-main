@@ -7,8 +7,6 @@ import Footer from './components/Footer'
 
 import Dashboard from './pages/Dashboard.js'
 
-import UserProfile from './components/UserProfile'
-
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Impressum from './pages/Impressum'
@@ -43,7 +41,7 @@ function App() {
 
           <Route path='/dashboard/:id' element={<Dashboard />} />
 
-          <Route path='/profile' element={<UserProfile />} />
+      
         </Routes>
         <Footer />
       </BrowserRouter>
