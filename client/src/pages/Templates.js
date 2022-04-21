@@ -19,7 +19,7 @@ const Templates = () => {
           <Col  className='col-12 col-lg-6'>
             <Card style={{backgroundColor:'#e4e4e4', borderRadius: '30px', width: '350px'}} className='my-4 mx-auto'>
                 <Card.Title className='fw-bold mt-3 text-center'>Techequipper Template</Card.Title>
-                <Card.Img className='px-4 my-2' src={process.env.PUBLIC_URL + '/images/antonis_shop.png'} style={{height: '300px', objectFit:'cover', borderRadius: '25px'}}/>
+                <Card.Img className='px-4 my-2' src={process.env.PUBLIC_URL + '/images/antonis_shop.png'} style={{height: '300px', objectFit:'cover', objectPosition: 'top center', borderRadius: '25px'}}/>
                 <Card.Body className='text-center'>
                   <a className='btn link mx-2' style={{backgroundColor: '#A47CA6'}} rel='noopener noreferrer' target='_blank' href='https://techequipper.herokuapp.com/' >demo</a>
                 </Card.Body>
