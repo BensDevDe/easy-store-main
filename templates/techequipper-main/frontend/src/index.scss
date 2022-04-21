@@ -1,0 +1,243 @@
+main {
+  min-height: 80vh;
+
+  .container {
+    margin-top: 200px;
+
+    .row.homescreenProducts {
+      justify-content: center;
+      padding-top: 80px;
+      padding-bottom: 60px;
+
+      >div {
+
+        border: 1px solid black;
+        margin-left: 50px;
+        margin-right: 50px;
+        box-shadow: 3px 3px 10px 5px #FF8080, -6px 3px 10px 3px #FFE488, -4px -3px 10px 3px #8CFF85, 8px -3px 10px 2px #80C7FF, 7px 5px 10px 4px #E488FF, -5px 5px 8px 3px #FF616B, -5px -3px 15px 1px #8E5CFF, 5px 5px 10px 5px rgba(0, 0, 0, 0);
+        margin-bottom: 50px;
+
+        >div {
+          border: 0;
+
+          >a {
+            >img {
+              min-height: 150px;
+              object-fit: cover;
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+h3.card-text {
+  padding-top: 10px;
+}
+
+h1 {
+  font-size: 1.4rem;
+  padding: 0.1rem;
+}
+
+
+a {
+  color: black !important;
+}
+
+input {
+  padding: 15px !important;
+  border: 0 !important;
+  background-color: whitesmoke !important;
+}
+
+label {
+  font-size: 1.1rem;
+  color: rgb(71, 71, 71);
+  text-decoration: underline !important;
+}
+
+
+h2 {
+  font-size: 25px !important;
+}
+
+
+
+.myLogo {
+  width: 50px;
+  height: 50px;
+  transform: scale(4);
+  margin-left: 15px;
+}
+
+
+
+
+#PayPal {
+  margin-right: 20px;
+  background-color: black !important;
+}
+
+label[class="form-check-label"] {
+  text-decoration: none !important;
+  padding-bottom: 30px;
+  padding-top: 6px;
+}
+
+
+#createProduct {
+  float: right
+}
+
+div[class="carousel slide"] {
+  width: 50%;
+  min-height: 500px;
+  max-height: 500px;
+  margin: 0 auto;
+
+}
+
+
+
+
+
+// navbar
+
+nav {
+  background-color: rgb(194, 244, 194);
+
+  
+
+  div {
+    justify-content: center;
+    >div {
+      >div {
+        a.nav-link {
+          &:hover {
+            border: 1px solid white;
+            border-radius: 15px;
+          }
+
+          i {
+            margin-right: 5px;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+
+// pagination 
+
+ul.pagination {
+  justify-content: center;
+
+  li {
+
+    a {
+      background-color: black;
+      color: white !important;
+    }
+  }
+}
+
+
+
+// homescreen 4 cards
+
+.g-4 {
+  margin-bottom: 60px;
+
+  >div.col {
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    }
+
+    >div.card {
+      padding: 20px;
+      height: 100%;
+
+      >img {
+        height: 250px !important;
+        width: 90%;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+
+
+// LOG IN
+
+.loginScreen {
+  >h1 {
+    margin-bottom: 30px;
+  }
+}
+
+
+
+// LOG IN END
+
+
+// product screen
+
+
+.goBack {
+  background-color: #66A593;
+  border: 0;
+  color: white !important;
+
+}
+
+
+.reviewsetc {
+  div.list-group.list-group-flush {
+    >div {
+      padding-left: 0;
+
+      form {
+        >div {
+          margin-bottom: 20px;
+        }
+
+        button {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}
+
+
+// product screen end
+
+
+
+// footer
+
+footer{
+  height:300px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#C2F4C2 ;
+
+
+  i{
+    transform: scale(2);
+    margin-left:20px;
+    margin-right:20px;
+  }
+
+}
+
+// footer end
