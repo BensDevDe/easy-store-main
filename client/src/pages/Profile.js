@@ -91,7 +91,7 @@ const Profile = () => {
             />
           </div>
           <div>
-            <label>Last Name: </label>
+            <label>Last Name:</label>
             <input
               type='text'
               className='form-control'
