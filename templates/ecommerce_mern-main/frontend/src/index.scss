@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;900&family=Patrick+Hand&family=Red+Hat+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+
+@import "../node_modules/bootstrap/scss/functions";
+
+//overwritting default theme-colors
+$primary: #070707;
+$secondary: white;
+$success: #a8b69a;
+// $info: rgb(175, 117, 8);
+// $warning,
+// $danger,
+// $light,
+$dark: #3b3838;
+
+
+// import the functions,variables &  mixins
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+//my custom colors
+
+$light-green: #a8b69a;
+$dark-green: #7d8873;
+$pink: #bf9075;
+$light-grey: #6b6b6b;
+$dark-grey: #a8b69a3d;
+$tertiary: #3fb247;
+
+
+//import bootstrap library
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+//main style-sheet
+@import './sass/main';
