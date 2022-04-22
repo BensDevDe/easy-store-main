@@ -149,7 +149,7 @@ exports.getUserProfileController = async (req, res) => {
     if (user) {
       res.status(200).json({
         firstName: user.name.firstName,
-        lastName: user.name.firstName,
+        lastName: user.name.lastName,
         street: user.address.street,
         city: user.address.city,
         postcode: user.address.postcode,
