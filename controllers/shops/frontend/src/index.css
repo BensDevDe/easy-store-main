@@ -1,0 +1,189 @@
+main {
+  min-height: 80vh;
+}
+
+main .container {
+  margin-top: 200px;
+}
+
+main .container .row.homescreenProducts {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+main .container .row.homescreenProducts > div {
+  border: 1px solid black;
+  margin-left: 50px;
+  margin-right: 50px;
+  -webkit-box-shadow: 3px 3px 10px 5px #FF8080, -6px 3px 10px 3px #FFE488, -4px -3px 10px 3px #8CFF85, 8px -3px 10px 2px #80C7FF, 7px 5px 10px 4px #E488FF, -5px 5px 8px 3px #FF616B, -5px -3px 15px 1px #8E5CFF, 5px 5px 10px 5px rgba(0, 0, 0, 0);
+          box-shadow: 3px 3px 10px 5px #FF8080, -6px 3px 10px 3px #FFE488, -4px -3px 10px 3px #8CFF85, 8px -3px 10px 2px #80C7FF, 7px 5px 10px 4px #E488FF, -5px 5px 8px 3px #FF616B, -5px -3px 15px 1px #8E5CFF, 5px 5px 10px 5px rgba(0, 0, 0, 0);
+  margin-bottom: 50px;
+}
+
+main .container .row.homescreenProducts > div > div {
+  border: 0;
+}
+
+main .container .row.homescreenProducts > div > div > a > img {
+  min-height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+h3.card-text {
+  padding-top: 10px;
+}
+
+h1 {
+  font-size: 1.4rem;
+  padding: 0.1rem;
+}
+
+a {
+  color: black !important;
+}
+
+input {
+  padding: 15px !important;
+  border: 0 !important;
+  background-color: whitesmoke !important;
+}
+
+label {
+  font-size: 1.1rem;
+  color: #474747;
+  text-decoration: underline !important;
+}
+
+h2 {
+  font-size: 25px !important;
+}
+
+.myLogo {
+  width: 50px;
+  height: 50px;
+  -webkit-transform: scale(4);
+          transform: scale(4);
+  margin-left: 15px;
+}
+
+#PayPal {
+  margin-right: 20px;
+  background-color: black !important;
+}
+
+label[class="form-check-label"] {
+  text-decoration: none !important;
+  padding-bottom: 30px;
+  padding-top: 6px;
+}
+
+#createProduct {
+  float: right;
+}
+
+div[class="carousel slide"] {
+  width: 50%;
+  min-height: 500px;
+  max-height: 500px;
+  margin: 0 auto;
+}
+
+nav {
+  background-color: #c2f4c2;
+}
+
+nav div {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+nav div > div > div a.nav-link:hover {
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
+nav div > div > div a.nav-link i {
+  margin-right: 5px;
+}
+
+ul.pagination {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+ul.pagination li a {
+  background-color: black;
+  color: white !important;
+}
+
+.g-4 {
+  margin-bottom: 60px;
+}
+
+.g-4 > div.col:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+          box-shadow: 4px -4px 15px 0px #FF1F1F, 12px -11px 7px 0px #FF9376, 20px -5px 7px 0px #FFE264, 20px 6px 7px 0px #F6FF33, 13px 12px 17px 0px #FF9527, 2px 17px 17px 0px #FF0000, -9px 21px 18px 0px #FFF212, -9px 6px 11px 0px #FF0808, -11px -9px 11px 0px #FFFA17, -11px -9px 11px 0px #FFFA17, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.g-4 > div.col > div.card {
+  padding: 20px;
+  height: 100%;
+}
+
+.g-4 > div.col > div.card > img {
+  height: 250px !important;
+  width: 90%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.loginScreen > h1 {
+  margin-bottom: 30px;
+}
+
+.goBack {
+  background-color: #66A593;
+  border: 0;
+  color: white !important;
+}
+
+.reviewsetc div.list-group.list-group-flush > div {
+  padding-left: 0;
+}
+
+.reviewsetc div.list-group.list-group-flush > div form > div {
+  margin-bottom: 20px;
+}
+
+.reviewsetc div.list-group.list-group-flush > div form button {
+  margin-top: 30px;
+}
+
+footer {
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #C2F4C2;
+}
+
+footer i {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+/*# sourceMappingURL=index.css.map */
