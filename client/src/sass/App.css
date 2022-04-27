@@ -448,6 +448,7 @@
 
 .profile-container .profile-box img {
   width: 40%;
+  border-radius: 50px;
 }
 
 body {

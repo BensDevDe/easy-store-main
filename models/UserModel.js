@@ -15,7 +15,7 @@ const userSchema = new Schema({
   },
 
   email: { type: String, lowercase: true, required: true },
-  avatar: { type: String },
+  avatar: { type: String, default: "dummy-profile-pic.png" },
   password: requiredString,
   role: {
     type: String,
@@ -31,7 +31,7 @@ const userSchema = new Schema({
     type: String,
     unique: true,
   },
-})
+}, {timestamps: true})
 const UserModel = model('User', userSchema)
 
 UserModel.comparePass = async function (givenPassword, userPassword) {

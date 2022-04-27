@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserDetails, updateUserProfile } from '../redux/actions/auth'
+import {
+  getUserDetails,
+  updateUserProfile,
+  uploadProfileAvatar,
+} from '../redux/actions/auth'
 import { useNavigate, Link } from 'react-router-dom'
 
 const Profile = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  // useEffect fetch userData
-  //   --> set state with data from the api call
+
   const [editEnabled, setEditEnabled] = useState(true)
   const enableEdit = () => {
     setEditEnabled((editEnabled) => !editEnabled)
   }
-  const [message, setMessage] = useState(null)
   const [changedData, setChangedData] = useState(false)
 
   const userLogin = useSelector((state) => state.userLogin)
@@ -20,9 +22,6 @@ const Profile = () => {
 
   const userDetails = useSelector((state) => state.userDetails)
   const { loading, error, user } = userDetails
-
-  const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
-  const { success, userUpdated } = userUpdateProfile
 
   const [userUpdate, setUserUpdate] = useState({
     firstName: '',
@@ -38,6 +37,7 @@ const Profile = () => {
 
   console.log('userUpdate', userUpdate)
   console.log('user', user)
+  console.log('changendData', changedData)
 
   useEffect(() => {
     if (!userInfo) {
@@ -67,12 +67,22 @@ const Profile = () => {
     // if (userUpdate.password !== userUpdate.confirmPassword) {
     //   setMessage('Passwords do not match')
     // } else {
+
     dispatch(updateUserProfile(userInfo._id, userUpdate))
     setChangedData(true)
 
     // }
   }
-  const backToProfile = () => {
+
+  const submitHandlerAvatar = (e) => {
+    e.preventDefault()
+
+    const formData = new FormData()
+    formData.append('file', userUpdate.avatar)
+    dispatch(uploadProfileAvatar(userInfo._id, formData))
+    setChangedData(true)
+  }
+  const backToProfile = (e) => {
     setChangedData(false)
     enableEdit()
   }
@@ -245,25 +255,30 @@ const Profile = () => {
                 {user.firstName} {user.lastName}
               </h6>
               <img
-                src={process.env.PUBLIC_URL + '/images/dummy-profile-pic.png'}
+                src={process.env.PUBLIC_URL + `/uploads/${user.avatar}` || ''}
                 alt='Profil Picture'
               />{' '}
             </div>
-            <form className='form-group-sm'>
+            <form
+              className='form-group-sm'
+              // encType='multipart/form-data'
+              // onSubmit={submitHandlerAvatar}
+            >
               <div>
                 <label>Upload Picture</label>
                 <input
+                  name='file'
                   type='file'
                   className='form-control'
-                  id='avatar'
+                  id='file'
                   disabled={editEnabled ? 'disabled' : ''}
                   onChange={(e) =>
-                    setUserUpdate({ ...userUpdate, avatar: e.target.value })
+                    setUserUpdate({ ...userUpdate, avatar: e.target.files[0] })
                   }
                 />
               </div>
 
-              <button type='submit'>Save</button>
+              <input  type='button' value="Save" onClick={submitHandlerAvatar}/>
             </form>
           </div>{' '}
         </div>

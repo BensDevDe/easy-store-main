@@ -97,6 +97,18 @@ const MenuItem = styled.div`
   })}
   ${tablet({ fontSize: '16px', marginTop: '10px' })}
 `
+
+const AvatarImg = styled.img`
+width: 50px;
+height: 50px;
+
+padding: 1px;
+margin-right: 10px;
+object-fit: cover;
+border: 1px solid #A47CA6;
+border-radius: 100%;
+ 
+`
 const Navbar = () => {
   const [isShowLogin, setIsShowLogin] = useState(false)
   const navigate = useNavigate()
@@ -109,6 +121,7 @@ const Navbar = () => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
+
 
   const logoutHandler = () => {
     dispatch(logout())
@@ -135,6 +148,10 @@ const Navbar = () => {
         <Right>
           {userInfo ? (
             <MenuItem onClick={() => navigate('/dashboard/home')}>
+           
+            <AvatarImg src={process.env.PUBLIC_URL + `/uploads/${userInfo.avatar}`}/>
+              
+
               {userInfo.firstName} {userInfo.lastName}
             </MenuItem>
           ) : (
