@@ -12,20 +12,11 @@ const SignIn = ({ isShowLogin, showLogin }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
 
-  console.log(error);
-  console.log(isShowLogin);
+  console.log(error)
+  console.log(isShowLogin)
 
   const navigate = useNavigate()
-  const location = useLocation();
-
-  const redirect = location.search ? location.search.split('=')[1] : '/'
-
-  // useEffect(() => {
-
-  //   if (userInfo) {
-  //       navigate(redirect)
-  //   }
-  // }, [loading])
+  const location = useLocation()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -50,9 +41,7 @@ const SignIn = ({ isShowLogin, showLogin }) => {
               id='userName'
               placeholder='Email'
               value={user.email}
-              onChange={(e) =>
-                setUser({ ...user, email: e.target.value })
-              }
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
             />{' '}
           </div>
           <div className='form-field d-flex align-items-center'>
@@ -64,9 +53,7 @@ const SignIn = ({ isShowLogin, showLogin }) => {
               id='pwd'
               placeholder='Password'
               value={user.password}
-              onChange={(e) =>
-                setUser({ ...user, password: e.target.value })
-              }
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
             />{' '}
           </div>{' '}
           <button
@@ -84,8 +71,10 @@ const SignIn = ({ isShowLogin, showLogin }) => {
             New to Easy-Store?{' '}
             <span>
               {' '}
-              <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}> SignUp
-          </Link>
+              <Link to='/signup' onClick={() => showLogin()}>
+                {' '}
+                SignUp
+              </Link>
             </span>
           </p>{' '}
         </div>

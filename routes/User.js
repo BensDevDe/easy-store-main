@@ -25,8 +25,8 @@ router.get('/profile/:id', getUserProfileController)
 router.put('/profile/update/:id', updateUserProfileController)
 
 router.put(
-  '/profile/update/upload/:id',
-  uploadFile.single('avatar'),
+  '/profile/uploadAvatar/:id',
+  uploadFile.single('file'),
   uploadController
 )
 
