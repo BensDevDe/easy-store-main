@@ -1,48 +1,98 @@
 .profile-container {
-    width: 80%;
-   margin-left: 50px;
-   margin-top: 50px;
-  
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+
+  .profile-container-1 {
+    width: 100%;
+    
+    margin-top: 50px;
+
     .profile-box {
-      width: 40%;
-      margin-bottom: 100px;
+      width: 100%;
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      align_items: center;
-  
+      align-items: space-between;
+
       .profile-head {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-  
+
         h5 {
           font-weight: 600;
         }
-  
       }
-  
-      
-  
+
       button {
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 1em;
-  
+
         color: $color-purple;
         background: transparent;
         border: none;
-  
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  .profile-container-2 {
+    width: 100%;
+    margin-left: 50px;
+    margin-top: 50px;
+
+   
+
+    .profile-box {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .profile-head {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h5 {
+          font-weight: 600;
+        }
+      }
+
+      input, button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+
+        color: $color-purple;
+        background: transparent;
+        border: none;
+
         &:hover {
           opacity: 0.5;
         }
       }
 
       img {
-        width: 40%;
-        border-radius: 50px;
+        width: 10em;
+        height: 10em;
+        border-radius: 100px;
+        margin-bottom: 20px;
       }
     }
   }
-  
+}
