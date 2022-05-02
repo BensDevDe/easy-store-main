@@ -24,8 +24,9 @@ router.get('/logout', logoutController)
 router.get('/profile/:id', getUserProfileController)
 
 router.put('/profile/update/:id', updateUserProfileController)
+
 router.get('/template123', (req, res)=>{
-  res.send('it workd')
+  res.send('it worked')
 })
 
 router.post('/template', createTemplateController)

@@ -9,15 +9,32 @@ exports.createTemplateController = async (req, res) => {
   const {shopName, template} = req.body
 
   const sourceDir = () => {
-    if (template === 1){
+    if (template === '1'){
       return (dirname + '/templates/ecommerce_mern-main')
     } else{
       return (dirname + '/templates/techequipper-main')
     }
   }
-
-  const destination = dirname + '/shops'
-  console.log(dirname);
+  
+   const dir = dirname + '/shops/';
+  const destination = dir + 'test'
+  // if (!fs.existsSync(dir)){
+  //     fs.mkdirSync(dir, { recursive: true });
+  // }
+  // let dir = dirname + '/shops' + req.body.shopName
+//   if (!fs.existsSync(dir)){
+//     fs.mkdirSync(dir, { recursive: true });
+// }
+fs.mkdir(path.join(dir, 'test'),
+  { recursive: true }, (err) => {
+    if (err) {
+      return console.error(err);
+    }
+    console.log('Directory created successfully!');
+  });
+  // let destination = dirname + '/shops'
+  // fs.mkdirSync(destination, { recursive: true })
+//   console.log(dirname);
 
   fs.copy(sourceDir(), destination, function (err) {
       if (err){
@@ -26,6 +43,6 @@ exports.createTemplateController = async (req, res) => {
       }
       res.send('Copy completed!')
   });
-  
+
 }
 

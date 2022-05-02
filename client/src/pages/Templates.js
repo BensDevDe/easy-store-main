@@ -26,16 +26,16 @@ const Templates = () => {
         withCredentials: true,
       }
       
-   const response = await fetch(API_URL + '/template', {
-    method: 'POST', 
-    credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title: 'Fetch POST Request Example' }) }, )
+  //  const response = await fetch(API_URL + '/template', {
+  //   method: 'POST', 
+  //   credentials: 'include',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ title: 'Fetch POST Request Example' }) }, )
   
-   const data = await response.json()
+  //  const data = await response.json()
       
 
-      // const data = await axios.post(API_URL + '/template', {shopName, template}, config)
+      const data = await axios.post(API_URL + '/template', {shopName, template}, config)
       console.log(data);
 
     } catch (error) {
