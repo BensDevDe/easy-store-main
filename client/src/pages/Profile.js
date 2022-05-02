@@ -12,8 +12,17 @@ const Profile = () => {
   const dispatch = useDispatch()
 
   const [editEnabled, setEditEnabled] = useState(true)
+  const [editEnabled1, setEditEnabled1] = useState(true)
+  const [editEnabled2, setEditEnabled2] = useState(true)
+
   const enableEdit = () => {
     setEditEnabled((editEnabled) => !editEnabled)
+  }
+  const enableEdit1 = () => {
+    setEditEnabled1((editEnabled1) => !editEnabled1)
+  }
+  const enableEdit2 = () => {
+    setEditEnabled2((editEnabled2) => !editEnabled2)
   }
   const [changedData, setChangedData] = useState(false)
 
@@ -180,13 +189,15 @@ const Profile = () => {
                     // required
                   />
                 </div>
+                <div className="button-container">
                 <button type='submit'>Save</button>
+                </div>
               </form>
             </div>
             <div className='profile-box'>
               <div className='profile-head'>
                 <h5>Personal Details</h5>
-                <button onClick={() => enableEdit()}>Edit</button>
+                <button onClick={() => enableEdit1()}>Edit</button>
               </div>
               <form className='form-group-sm' onSubmit={submitHandler}>
                 <div>
@@ -199,7 +210,7 @@ const Profile = () => {
                     onChange={(e) =>
                       setUserUpdate({ ...userUpdate, street: e.target.value })
                     }
-                    disabled={editEnabled ? 'disabled' : ''}
+                    disabled={editEnabled1 ? 'disabled' : ''}
                     required
                   />
                 </div>
@@ -213,7 +224,7 @@ const Profile = () => {
                     onChange={(e) =>
                       setUserUpdate({ ...userUpdate, city: e.target.value })
                     }
-                    disabled={editEnabled ? 'disabled' : ''}
+                    disabled={editEnabled1 ? 'disabled' : ''}
                     required
                   />
                 </div>
@@ -227,7 +238,7 @@ const Profile = () => {
                     onChange={(e) =>
                       setUserUpdate({ ...userUpdate, postcode: e.target.value })
                     }
-                    disabled={editEnabled ? 'disabled' : ''}
+                    disabled={editEnabled1 ? 'disabled' : ''}
                     required
                   />
                 </div>
@@ -241,12 +252,14 @@ const Profile = () => {
                     onChange={(e) =>
                       setUserUpdate({ ...userUpdate, country: e.target.value })
                     }
-                    disabled={editEnabled ? 'disabled' : ''}
+                    disabled={editEnabled1 ? 'disabled' : ''}
                     required
                   />
                 </div>
 
+                <div className="button-container">
                 <button type='submit'>Save</button>
+                </div>
               </form>
             </div>
           </div>
@@ -254,7 +267,7 @@ const Profile = () => {
             <div className='profile-box'>
               <div className='profile-head'>
                 <h5>Profil Image</h5>
-                <button onClick={() => enableEdit()}>Edit</button>
+                <button onClick={() => enableEdit2()}>Edit</button>
               </div>
               <div>
                 <h6>
@@ -267,17 +280,15 @@ const Profile = () => {
               </div>
               <form
                 className='form-group-sm'
-                // encType='multipart/form-data'
-                // onSubmit={submitHandlerAvatar}
+               
               >
                 <div>
-                 
                   <input
                     name='file'
                     type='file'
                     className='form-control'
                     id='file'
-                    disabled={editEnabled ? 'disabled' : ''}
+                    disabled={editEnabled2 ? 'disabled' : ''}
                     onChange={(e) =>
                       setUserUpdate({
                         ...userUpdate,
@@ -286,18 +297,14 @@ const Profile = () => {
                     }
                   />
                 </div>
-
-                <input
-                  type='button'
-                  value='Save'
-                  onClick={submitHandlerAvatar}
-                />
+                <div className="button-container">
+                <button onClick={submitHandlerAvatar}>Save</button>
+                </div>
               </form>
             </div>{' '}
             <div className='profile-box'>
-              <div className='profile-head'>
-                Your Plans
-             </div>
+              <div className='profile-head'> <h5> Your Plans</h5>
+               </div>
             </div>{' '}
           </div>
         </div>
