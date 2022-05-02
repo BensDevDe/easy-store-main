@@ -1,7 +1,7 @@
 import React from 'react'
+import { countries } from '../data'
 
-
-const PersonalDetails = ({ newUser, setNewUser }) => {
+const PersonalDetails = ({ newUser, setNewUser, messageEmpty1 }) => {
   return (
     <div>
       <div className='form-group'>
@@ -10,7 +10,7 @@ const PersonalDetails = ({ newUser, setNewUser }) => {
           type='text'
           className='form-control'
           id='firstName'
-          placeholder='First Name'
+          placeholder='First Name*'
           value={newUser.firstName}
           onChange={(e) =>
             setNewUser({ ...newUser, firstName: e.target.value })
@@ -24,7 +24,7 @@ const PersonalDetails = ({ newUser, setNewUser }) => {
           type='text'
           className='form-control'
           id='firstName'
-          placeholder='Last Name'
+          placeholder='Last Name*'
           value={newUser.lastName}
           onChange={(e) => setNewUser({ ...newUser, lastName: e.target.value })}
           required
@@ -36,7 +36,7 @@ const PersonalDetails = ({ newUser, setNewUser }) => {
           type='text'
           className='form-control'
           id='address'
-          placeholder='Street'
+          placeholder='Street*'
           value={newUser.street}
           onChange={(e) => setNewUser({ ...newUser, street: e.target.value })}
           required
@@ -44,7 +44,7 @@ const PersonalDetails = ({ newUser, setNewUser }) => {
       </div>
       <div className='form-group  d-flex '>
         <div>
-          <label htmlFor='city'></label>
+          <label htmlFor='city*'></label>
           <input
             type='text'
             className='form-control'
@@ -61,7 +61,7 @@ const PersonalDetails = ({ newUser, setNewUser }) => {
             type='text'
             className='form-control'
             id='zip'
-            placeholder='ZIP'
+            placeholder='ZIP*'
             value={newUser.postcode}
             onChange={(e) =>
               setNewUser({ ...newUser, postcode: e.target.value })
@@ -72,16 +72,22 @@ const PersonalDetails = ({ newUser, setNewUser }) => {
       </div>
       <div className='form-group'>
         <label htmlFor='country'></label>
-        <input
-          type='text'
-          className='form-control'
+        <select
           id='country'
-          placeholder='Country'
+          className='form-select'
+          aria-label='Default select example'
+          placeholder='Country*'
           value={newUser.country}
           onChange={(e) => setNewUser({ ...newUser, country: e.target.value })}
           required
-        />
+        >
+          <option selected>Country</option>
+          {countries.map((option) => (
+            <option>{option}</option>
+          ))}
+        </select>
       </div>
+      <div className='error-message'>{messageEmpty1}</div>
     </div>
   )
 }

@@ -5,12 +5,10 @@ import { Search } from '@material-ui/icons'
 import SignIn from './SignIn'
 import { logout } from '../redux/actions/auth'
 import Toggle from '../components/Toggle'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { mobileS } from '../responsive'
 import { mobileM } from '../responsive'
 import { tablet } from '../responsive'
-
-import { useNavigate } from 'react-router-dom'
 
 const Container = styled.div`
   height: 100px;
@@ -99,15 +97,14 @@ const MenuItem = styled.div`
 `
 
 const AvatarImg = styled.img`
-width: 50px;
-height: 50px;
+  width: 50px;
+  height: 50px;
 
-padding: 1px;
-margin-right: 10px;
-object-fit: cover;
-border: 1px solid #A47CA6;
-border-radius: 100%;
- 
+  padding: 1px;
+  margin-right: 10px;
+  object-fit: cover;
+  border: 1px solid #a47ca6;
+  border-radius: 100%;
 `
 const Navbar = () => {
   const [isShowLogin, setIsShowLogin] = useState(false)
@@ -122,6 +119,8 @@ const Navbar = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
 
+  const userDetails = useSelector((state) => state.userDetails)
+  const { user } = userDetails
 
   const logoutHandler = () => {
     dispatch(logout())
@@ -148,14 +147,16 @@ const Navbar = () => {
         <Right>
           {userInfo ? (
             <MenuItem onClick={() => navigate('/dashboard/home')}>
-           
-            <AvatarImg src={process.env.PUBLIC_URL + `/uploads/${userInfo.avatar}`}/>
-              
-
+              <AvatarImg
+                src={
+                  process.env.PUBLIC_URL + `/uploads/${user.avatar}` ||
+                  `/uploads/${userInfo.avatar}`
+                }
+              />
               {userInfo.firstName} {userInfo.lastName}
             </MenuItem>
           ) : (
-            <MenuItem>Free Trial</MenuItem>
+            <MenuItem onClick={() => navigate('/signup')}>Free Trial</MenuItem>
           )}
 
           {userInfo ? (

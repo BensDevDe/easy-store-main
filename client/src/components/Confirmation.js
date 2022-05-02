@@ -6,36 +6,31 @@ const Confirmation = ({ newUser }) => {
       <div className='confirmation-box'>
         <div className='confirmation-text  '>
           <div>
-            <h6>
-              Name:{' '}
-              
-            </h6>
+            <h6>Name: </h6>
             <p>
-                {' '}
-                {newUser.firstName} {newUser.lastName}
-              </p>{' '}
+              {' '}
+              {newUser.firstName} {newUser.lastName}
+            </p>{' '}
           </div>
         </div>
         <div className='confirmation-text'>
-          <h6>
-            Email: 
-          </h6>
+          <h6>Email:</h6>
           <p>{newUser.email}</p>
         </div>
         <div className='confirmation-text'>
-          <h6>Street:  </h6>
+          <h6>Street: </h6>
           <p>{newUser.street}</p>
-         
         </div>
         <div className='confirmation-text'>
           <h6>City: </h6>
-          <p>   {newUser.postcode} {newUser.city}</p>
-         
+          <p>
+            {' '}
+            {newUser.postcode} {newUser.city}
+          </p>
         </div>
         <div className='confirmation-text'>
           <h6>Country:</h6>
           <p>{newUser.country}</p>
-        
         </div>
       </div>
 

@@ -40,8 +40,6 @@ function App() {
           <Route path='/faq' element={<Faq />} />
 
           <Route path='/dashboard/:id' element={<Dashboard />} />
-
-      
         </Routes>
         <Footer />
       </BrowserRouter>

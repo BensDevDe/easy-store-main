@@ -9,7 +9,7 @@ exports.validateCredentials = (req, res, next) => {
       .status(400)
       .json({ errMsg: "email must be at least 6 characters long!" });
   if (!isEmail(email))
-    return res.status(400).json({ errMsg: "email must be valid!" });
+    return res.status(400).json({ errMsg: "Please enter a valid email" });
 
   if (req.url === "#/register") {
     if (password.length < 8)

@@ -1,13 +1,26 @@
-
 .signup-container {
-  height: 120vh;
+  height: 100vh;
   width: 100%;
   margin: 0 auto;
-  //margin-bottom: 40vh;
   display: flex;
   justify-content: center;
 
+  @media only screen and (max-width: 1200px) {
+    padding: 2em;
+  }
+
+  img {
+    @media only screen and (max-width: 1200px) {
+      display: none;
+    }
+  }
+
   .signup-form {
+
+    .error-message {
+      color: red;
+
+    }
     width: 60em;
     height: 40em;
     border: 2px solid $color-purple;

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import validator from 'validator'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { register } from '../redux/actions/auth'
 
 import UserDetails from '../components/UserDetails'
@@ -12,7 +12,6 @@ import Confirmation from '../components/Confirmation'
 import Success from '../components/Success'
 
 import { FaArrowRight } from 'react-icons/fa'
-
 import { FaArrowLeft } from 'react-icons/fa'
 
 const SignUp = () => {
@@ -28,63 +27,86 @@ const SignUp = () => {
     confirmPassword: '',
   })
 
-  const [messageEmail, setMessageEmail] = useState("")
-  const [messageConfirm, setMessagePasswordConfirm] = useState("")
-  const [messagePasswordLength, setMessagePasswordLength] = useState("")
-
-  console.log(messageEmail);
-  console.log(messageConfirm);
-  console.log(messagePasswordLength);
-
-  
+  const [messageEmail, setMessageEmail] = useState('')
+  const [messagePasswordConfirm, setMessagePasswordConfirm] = useState('')
+  const [messagePasswordLength, setMessagePasswordLength] = useState('')
+  const [messageEmpty, setMessageEmpty] = useState('')
+  const [messageEmpty1, setMessageEmpty1] = useState('')
 
   const [page, setPage] = useState(1)
 
   const emailValidation = () => {
     return validator.isEmail(newUser.email)
   }
+  const emptyValidation = () => {
+    return validator.isEmpty(
+      newUser.email || newUser.password || newUser.confirmPassword
+    )
+  }
+
+  const emptyValidation1 = () => {
+    return validator.isEmpty(
+      newUser.firstName ||
+        newUser.lastName ||
+        newUser.street ||
+        newUser.city ||
+        newUser.postcode ||
+        newUser.country
+    )
+  }
   const passwordConfirm = () => {
     const passConf = newUser.password !== newUser.confirmPassword ? false : true
     return passConf
   }
-
-
-
   const passwordLengthValidation = () => {
-    return newUser.password < 8 ? false : true
+    const lengthPass = newUser.password.length <= 7 ? false : true
+    return lengthPass
   }
 
   const nextPage = (e) => {
     e.preventDefault()
-    const nextPage = page + 1
-    setPage(nextPage)
 
-    // if (page === 1) {
-    //   const emailVal = emailValidation()
-    //   const passConfirm = passwordConfirm()
-    //   const passLength = passwordLengthValidation()
-    //   console.log(passConfirm);
-    //   if (!emailVal) {
-    //     setMessageEmail('Email is not valid')
-    //   } else if (emailVal) {
-    //     setMessageEmail("")
-    //   } else if (passConfirm === false) {
-    //     setMessagePasswordConfirm('Password do not match')
-    //   } else if (passConfirm) {
-    //     setMessagePasswordConfirm(null)
-    //   } else if (!passLength) {
-    //     setMessagePasswordLength('Password must have at least 8 characters')
-    //   } else {
-    //     const nextPage = page + 1
-    //     setPage(nextPage)
-    //   }
-    // } else if (page === 2) {
-    // } else {
-    // }
+    if (page === 1) {
+      setMessageEmail('')
+      setMessagePasswordConfirm('')
+      setMessagePasswordLength('')
+      setMessageEmpty('')
 
-   
+      const emailVal = emailValidation()
+      const passConfirm = passwordConfirm()
+      const passLength = passwordLengthValidation()
+      const fieldEmpty = emptyValidation()
+
+      console.log('messagePasswordConfirm', messagePasswordConfirm)
+      console.log('passConfirm', passConfirm)
+      console.log('length', passLength)
+
+      if (!emailVal) {
+        setMessageEmail('Email is not valid')
+      } else if (passConfirm === false) {
+        setMessagePasswordConfirm('Password do not match')
+      } else if (!passLength) {
+        setMessagePasswordLength('Password must have at least 8 characters')
+      }
+      // else if (!fieldEmpty) {
+      //   setMessageEmpty('* fields are required')
+      // }
+      else {
+        const nextPage = page + 1
+        setPage(nextPage)
+      }
+    } else if (page === 2) {
+      setMessageEmpty('')
+      // const fieldEmpty1 = emptyValidation1()
+      // if (!fieldEmpty1) {
+      //   setMessageEmpty1('* fields are required')
+      // } else {
+      const nextPage = page + 1
+      setPage(nextPage)
+      // }
+    } else {
+    }
   }
-
 
   const previousPage = (e) => {
     e.preventDefault()
@@ -137,8 +159,10 @@ const SignUp = () => {
                 newUser={newUser}
                 setNewUser={setNewUser}
                 messageEmail={messageEmail}
-                messageConfirm= {messageConfirm}
+                messagePasswordConfirm={messagePasswordConfirm}
                 messagePasswordLength={messagePasswordLength}
+                messageEmpty={messageEmpty}
+                messageEmpty1={messageEmpty1}
                 nextPage={nextPage}
               />
             ) : page === 2 ? (
@@ -147,6 +171,7 @@ const SignUp = () => {
                 nextPage={nextPage}
                 newUser={newUser}
                 setNewUser={setNewUser}
+                messageEmpty={messageEmpty}
               />
             ) : page === 3 ? (
               <Confirmation

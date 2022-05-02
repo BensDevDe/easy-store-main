@@ -211,27 +211,9 @@ exports.uploadController = async (req, res) => {
     const { id } = req.params
     const user = await UserModel.findById(id)
 
-    // const file = {
-    //   fileName: req.file.originalname,
-    //   filePath: req.file.path,
-    //   fileType: req.file.mimetype,
-    //   fileSize: fileSizeFormatter(req.file.size, 2),
-    // }
-
-    // console.log('file', file)
-    // console.log('user', user)
-    // console.log('req.body', req.body)
-    // console.log('filenme', req.file.filename)
-    const imagePath = '../../easy-store-main/client/public/uploads' + req.file.filename
-
+    const imagePath =
+      '../../easy-store-main/client/public/uploads' + req.file.filename
     if (user) {
-      // user.name.firstName = req.body.firstName || user.name.firstName
-      // user.name.lastName = req.body.lastName || user.name.lastName
-      // user.email = req.body.email || user.email
-      // user.address.street = req.body.street || user.address.street
-      // user.address.city = req.body.city || user.address.city
-      // user.address.postcode = req.body.postcode || user.address.postcode
-      // user.address.country = req.body.country || user.address.country
       user.avatar = req.file.filename || imagePath
 
       const updatedUser = await user.save()
@@ -244,8 +226,6 @@ exports.uploadController = async (req, res) => {
     }
   } catch (error) {
     res.status(500).send(error.message)
-    // throw new Error('ImageUpload not possible, user not found')
-    //console.log(error)
   }
 }
 
@@ -261,53 +241,3 @@ const fileSizeFormatter = (bytes, decimal) => {
     parseFloat((bytes / Math.pow(1000, index)).toFixed(dm)) + '-' + sizes[index]
   )
 }
-
-// exports.uploadController = async (req, res) => {
-//   console.log(req.body);
-//   console.log(req.user);
-//   console.log(req.file.filename);
-//   const imagePath = '/uploads/' + req.file.filename
-
-//   console.log(imagePath)
-
-//   try {
-//     const { id } = req.params
-
-//     const user = await UserModel.findById(id)
-
-//     if (user) {
-//       user.name.firstName = req.body.firstName || user.name.firstName
-//       user.name.lastName = req.body.lastName || user.name.lastName
-//       user.email = req.body.email || user.email
-//       user.address.street = req.body.street || user.address.street
-//       user.address.city = req.body.city || user.address.city
-//       user.address.postcode = req.body.postcode || user.address.postcode
-//       user.address.country = req.body.country || user.address.country
-//       user.avatar = req.body.avatar || user.avatar
-
-//       if (req.body.password) {
-//         user.password = req.body.password
-//       }
-
-//       const updatedUser = await user.save()
-
-//       res.status(200).json({
-//         firstName: user.name.firstName,
-//         lastName: user.name.firstName,
-//         email: user.email,
-//         street: user.address.street,
-//         city: user.address.city,
-//         postcode: user.address.postcode,
-//         country: user.address.country,
-//         avatar: imagePath,
-//         role: user.role,
-//         token: getToken(updatedUser._id),
-//       })
-//     }
-//   } catch (error) {
-//     res.status(404)
-//     throw new Error('ImageUpload not possible, user not found')
-//   }
-
-//   return res.status(200).json({ msg: 'your image upload was successfull', img })
-// }
