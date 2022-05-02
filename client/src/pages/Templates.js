@@ -1,7 +1,51 @@
 import { Card }from 'react-bootstrap'
 import {  Row, Col, Form, Button} from 'react-bootstrap'
+import { useState } from 'react'
+import axios from 'axios'
 
 const Templates = () => {
+
+  const [shopName, setShopName] = useState('')
+  const [template, setTemplate] = useState('')
+
+  // const createNewShop = () => {
+  //   console.log(`Shop's name:${shopName}`);
+  //   console.log(`Template chosen:${template}`);
+  // }
+
+  const submitHandler = async (e) => {
+    e.preventDefault()
+
+    const API_URL = 'http://localhost:5001/user'
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      }
+      
+  //  const response = await fetch(API_URL + '/template', {
+  //   method: 'POST', 
+  //   credentials: 'include',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ title: 'Fetch POST Request Example' }) }, )
+  
+  //  const data = await response.json()
+      
+
+      const data = await axios.post(API_URL + '/template', {shopName, template}, config)
+      console.log(data);
+
+    } catch (error) {
+      console.error(error)
+    }
+
+
+  }
+
+
   return (
     <div className='my-3' style={{width: '80vw'}}>
       <Row className='justify-content-center mx-5'>
@@ -22,17 +66,36 @@ const Templates = () => {
         <Col>
         <Row className='mt-2 justify-content-center'>
           <Col className='my-2 text-center mx-auto'>
-            <Form.Group  className='my-2 mx-auto'controlId="exampleForm.ControlInput1">
-              <Form.Label>Shop's name:</Form.Label>
-              <Form.Control className='mx-auto'type="name" placeholder="Example: Anna's Bakery"  style={{width: '300px'}} />
-            </Form.Group>
 
-              <Form.Select className='mt-3 mb-2 text-center mx-auto' aria-label="Default select example" style={{width: '300px'}}>
-              <option>Choose your Template</option>
-                <option value="1">Organic Shop</option>
-                <option value="2">Techequipper</option>
-              </Form.Select>
-              <Button className='my-2 text-center ms-2' style={{backgroundColor: '#A47CA6', border: 'none', width: '200px'}}  >Create Online Shop</Button>
+            <Form  onSubmit={submitHandler}>
+              <Form.Group  className='my-2 mx-auto'controlId="CreateShop" >
+              
+                <Form.Label>Shop's name:</Form.Label>
+
+                <Form.Control as='textarea' className='mx-auto'type="name" placeholder="Example: Anna's Bakery"  style={{width: '300px'}}
+                onChange={(e) => setShopName(e.target.value)} />
+                
+                <Form.Select as='select' className='mt-3 mb-2 text-center mx-auto' aria-label="Default select example" style={{width: '300px'}}
+                onChange={(e) => setTemplate(e.target.value)}>
+                  <option>Choose your Template</option>
+                  <option value="1">Organic Shop</option>
+                  <option value="2">Techequipper</option>
+                </Form.Select>
+
+              </Form.Group>
+              <Button className='my-2 text-center ms-2' type='submit' style={{backgroundColor: '#A47CA6', border: 'none', width: '200px'}}
+                >Create Online Shop</Button>
+                  {/* {shopName ?(
+                    <Message variant='success'>
+                      Congratulations! {shopName} is being created! Soon you'll receive a confirmation on your registered e-mail from us
+                    </Message>): (
+                      <Message variant='danger'>
+                      Congratulations! {shopName} is being created! Soon you'll receive a confirmation on your registered e-mail from us
+                    </Message>
+                    )
+                    } */}
+              </Form>
+
             </Col>
           </Row>
         </Col>
