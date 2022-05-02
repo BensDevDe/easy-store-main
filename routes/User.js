@@ -13,16 +13,14 @@ const {
 const { createTemplateController } = require('../controllers/templateController')
 const { validateCredentials } = require('../middleware/requestValidator')
 const { protect, admin } = require('../middleware/authMiddleware.js')
-const { uploadFile } = require("../middleware/uploadFile");
+const { uploadFile } = require('../middleware/uploadFile')
 
-router.post('/register', registerController)
+router.post('/register', validateCredentials, registerController)
 router.get('/register/confirm/:confirmationCode', verifyUserController)
 
 router.post('/login', loginController)
 router.get('/logout', logoutController)
-
 router.get('/profile/:id', getUserProfileController)
-
 router.put('/profile/update/:id', updateUserProfileController)
 
 router.get('/template123', (req, res)=>{

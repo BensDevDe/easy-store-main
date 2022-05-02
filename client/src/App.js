@@ -22,7 +22,6 @@ import NavbarEdit from "./pages/NavbarEdit";
 function App() {
   const { darkMode } = useSelector((state) => state.themeReducer)
   return (
-
     <NavbarEdit/>
     // <div
     //   className='Container'
@@ -73,6 +72,7 @@ function App() {
     //   </CookieConsent>
     //   <ScrollUpButton style={{ backgroundColor: '#a47ca6' }} />
     // </div>
+
   )
 }
 
