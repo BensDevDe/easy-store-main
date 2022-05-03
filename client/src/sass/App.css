@@ -21,6 +21,16 @@
           justify-content: center;
 }
 
+.signup-container input:-webkit-autofill,
+.signup-container textarea:-webkit-autofill,
+.signup-container select:-webkit-autofill {
+  -webkit-text-fill-color: #35403A !important;
+  -webkit-color: #A47CA6;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  -webkit-background-clip: text;
+  -webkit-background-color: transparent !important;
+}
+
 @media only screen and (max-width: 1200px) {
   .signup-container {
     padding: 2em;
@@ -41,8 +51,20 @@
   border-radius: 0.25rem;
 }
 
+.signup-container .signup-form input {
+  color: #35403A;
+}
+
+.signup-container .signup-form input:focus {
+  border-color: #A47CA6;
+  -webkit-box-shadow: 2px 2px 2px #A47CA6;
+          box-shadow: 2px 2px 2px #A47CA6;
+  color: #35403A;
+}
+
 .signup-container .signup-form .error-message {
   color: red;
+  font-weight: bold;
 }
 
 .signup-container .signup-form h3,
@@ -258,6 +280,20 @@
   color: white;
 }
 
+.wrapper .form-field input:focus {
+  background-color: none;
+}
+
+.wrapper .form-field input:-webkit-autofill,
+.wrapper .form-field textarea:-webkit-autofill,
+.wrapper .form-field select:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+  -webkit-color: #A47CA6;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  -webkit-background-clip: text;
+  -webkit-background-color: transparent !important;
+}
+
 .wrapper .btn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -417,6 +453,33 @@
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
+}
+
+.profile-container input:-webkit-autofill,
+.profile-container textarea:-webkit-autofill,
+.profile-container select:-webkit-autofill {
+  -webkit-text-fill-color: #35403A !important;
+  -webkit-color: #A47CA6;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  -webkit-background-clip: text;
+  -webkit-background-color: transparent !important;
+}
+
+.profile-container span {
+  color: red;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.profile-container input {
+  color: #35403A;
+}
+
+.profile-container input:focus {
+  border-color: #A47CA6;
+  -webkit-box-shadow: 2px 2px 2px #A47CA6;
+          box-shadow: 2px 2px 2px #A47CA6;
+  color: #35403A;
 }
 
 .profile-container .button-container {

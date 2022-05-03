@@ -8,6 +8,7 @@
   box-shadow: 2px 2px 2px #cbced1, -2px -2px 2px #fff;
   z-index: 999;
 
+
   position: fixed;
   right: 10%;
   top: 3%;
@@ -47,6 +48,9 @@
     border-radius: 0.5rem;
     box-shadow: inset 2px 2px 2px #cbced1, inset -2px -2px 2px #fff;
 
+
+   
+
     input {
       width: 100%;
       display: block;
@@ -61,7 +65,28 @@
       &::placeholder {
         color: $color-white;
       }
+
+      &:focus {
+        background-color: none;
+
+      }
+
+
     }
+
+    input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  // -webkit-box-shadow: 0px 0px 0px 1000px $color-purple inset !important;
+  -webkit-text-fill-color: white !important;
+  -webkit-color: $color-purple;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  -webkit-background-clip: text;
+  -webkit-background-color: transparent !important;
+ 
+ 
+}
+   
   }
   .btn {
     display: flex;
@@ -110,3 +135,5 @@
   transform: translateY(100px) scale(0) rotateY(180deg);
   opacity: 0;
 }
+
+

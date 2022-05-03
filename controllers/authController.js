@@ -126,11 +126,11 @@ exports.loginController = async (req, res) => {
           token,
         })
     } else {
-      res.status(401).send('invalid email or password')
+      res.status(401).json({msg: 'invalid email or password'})
     }
   } catch (err) {
-    console.log(err)
-    res.status(500).json(err)
+  
+    res.status(500).json({err})
   }
 }
 

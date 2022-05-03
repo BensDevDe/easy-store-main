@@ -5,6 +5,17 @@
   display: flex;
   justify-content: center;
 
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    // -webkit-box-shadow: 0px 0px 0px 1000px $color-purple inset !important;
+    -webkit-text-fill-color: $color-darkgrey !important;
+    -webkit-color: $color-purple;
+    -webkit-transition: background-color 5000s ease-in-out 0s;
+    -webkit-background-clip: text;
+    -webkit-background-color: transparent !important;
+  }
+
   @media only screen and (max-width: 1200px) {
     padding: 2em;
   }
@@ -16,10 +27,18 @@
   }
 
   .signup-form {
+    input {
+      color: $color-darkgrey;
+      &:focus {
+        border-color: $input-focus-border-color;
+        box-shadow: $input-focus-box-shadow;
+        color: $input-focus-color;
+      }
+    }
 
     .error-message {
       color: red;
-
+      font-weight: bold;
     }
     width: 60em;
     height: 40em;

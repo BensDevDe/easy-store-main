@@ -149,8 +149,7 @@ const Navbar = () => {
             <MenuItem onClick={() => navigate('/dashboard/home')}>
               <AvatarImg
                 src={
-                  process.env.PUBLIC_URL + `/uploads/${user.avatar}` ||
-                  `/uploads/${userInfo.avatar}`
+                  process.env.PUBLIC_URL + `/uploads/${userInfo.avatar}` 
                 }
               />
               {userInfo.firstName} {userInfo.lastName}

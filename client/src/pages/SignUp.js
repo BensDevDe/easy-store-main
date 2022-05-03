@@ -77,10 +77,6 @@ const SignUp = () => {
       const passLength = passwordLengthValidation()
       const fieldEmpty = emptyValidation()
 
-      console.log('messagePasswordConfirm', messagePasswordConfirm)
-      console.log('passConfirm', passConfirm)
-      console.log('length', passLength)
-
       if (!emailVal) {
         setMessageEmail('Email is not valid')
       } else if (passConfirm === false) {

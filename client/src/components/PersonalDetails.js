@@ -87,6 +87,7 @@ const PersonalDetails = ({ newUser, setNewUser, messageEmpty1 }) => {
           ))}
         </select>
       </div>
+      <p>* required fields</p>
       <div className='error-message'>{messageEmpty1}</div>
     </div>
   )
