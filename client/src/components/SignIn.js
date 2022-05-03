@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { login } from '../redux/actions/auth'
 
 const SignIn = ({ isShowLogin, showLogin }) => {
@@ -12,11 +12,7 @@ const SignIn = ({ isShowLogin, showLogin }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
 
-  console.log(error)
-  console.log(isShowLogin)
-
-  const navigate = useNavigate()
-  const location = useLocation()
+  console.log(error);
 
   const handleSubmit = (e) => {
     e.preventDefault()

@@ -6,6 +6,7 @@ import {
   uploadProfileAvatar,
 } from '../redux/actions/auth'
 import { useNavigate, Link } from 'react-router-dom'
+import PasswordStrengthBar from 'react-password-strength-bar'
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -17,14 +18,22 @@ const Profile = () => {
 
   const enableEdit = () => {
     setEditEnabled((editEnabled) => !editEnabled)
+    setEditEnabled1(true)
+    setEditEnabled2(true)
   }
   const enableEdit1 = () => {
     setEditEnabled1((editEnabled1) => !editEnabled1)
+    setEditEnabled(true)
+    setEditEnabled2(true)
   }
   const enableEdit2 = () => {
     setEditEnabled2((editEnabled2) => !editEnabled2)
+    setEditEnabled1(true)
+    setEditEnabled(true)
   }
   const [changedData, setChangedData] = useState(false)
+
+  const [message, setMessage] = useState(false)
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -43,10 +52,6 @@ const Profile = () => {
     country: '',
     avatar: '',
   })
-
-  console.log('userUpdate', userUpdate)
-  console.log('user', user)
-  console.log('changendData', changedData)
 
   useEffect(() => {
     if (!userInfo) {
@@ -73,14 +78,12 @@ const Profile = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    // if (userUpdate.password !== userUpdate.confirmPassword) {
-    //   setMessage('Passwords do not match')
-    // } else {
-
-    dispatch(updateUserProfile(userInfo._id, userUpdate))
-    setChangedData(true)
-
-    // }
+    if (userUpdate.password !== userUpdate.confirmPassword) {
+      setMessage(true)
+    } else {
+      dispatch(updateUserProfile(userInfo._id, userUpdate))
+      setChangedData(true)
+    }
   }
 
   const submitHandlerAvatar = (e) => {
@@ -178,8 +181,14 @@ const Profile = () => {
                     // required
                   />
                 </div>
+                <PasswordStrengthBar password={userUpdate.password} />
                 <div>
-                  <label>Confirm Password:</label>
+                  <label style={{ display: 'flex' }}>
+                    Confirm Password:{' '}
+                    <span>
+                      {message ? <p>Password do not match</p> : <p></p>}
+                    </span>
+                  </label>
                   <input
                     type='password'
                     className='form-control'
@@ -189,8 +198,8 @@ const Profile = () => {
                     // required
                   />
                 </div>
-                <div className="button-container">
-                <button type='submit'>Save</button>
+                <div className='button-container'>
+                  <button type='submit'>Save</button>
                 </div>
               </form>
             </div>
@@ -257,8 +266,8 @@ const Profile = () => {
                   />
                 </div>
 
-                <div className="button-container">
-                <button type='submit'>Save</button>
+                <div className='button-container'>
+                  <button type='submit'>Save</button>
                 </div>
               </form>
             </div>
@@ -278,10 +287,7 @@ const Profile = () => {
                   alt='Profil Picture'
                 />{' '}
               </div>
-              <form
-                className='form-group-sm'
-               
-              >
+              <form className='form-group-sm'>
                 <div>
                   <input
                     name='file'
@@ -297,14 +303,16 @@ const Profile = () => {
                     }
                   />
                 </div>
-                <div className="button-container">
-                <button onClick={submitHandlerAvatar}>Save</button>
+                <div className='button-container'>
+                  <button onClick={submitHandlerAvatar}>Save</button>
                 </div>
               </form>
             </div>{' '}
             <div className='profile-box'>
-              <div className='profile-head'> <h5> Your Plans</h5>
-               </div>
+              <div className='profile-head'>
+                {' '}
+                <h5> Your Plans</h5>
+              </div>
             </div>{' '}
           </div>
         </div>

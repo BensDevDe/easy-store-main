@@ -27,7 +27,6 @@ export const login = (user) => async (dispatch) => {
       },
       withCredentials: true,
     }
-
     const { data } = await axios.post(API_URL + 'login', user, config)
 
     dispatch({
