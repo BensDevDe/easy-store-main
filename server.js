@@ -36,10 +36,6 @@ mongoose
 app.use("/user", require("./routes/User"));
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> template-duplicate
 app.listen(process.env.PORT || 5001, () =>
   console.log(`server Up on ${process.env.PORT || 5001}`)
 );
