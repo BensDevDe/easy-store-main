@@ -8,10 +8,11 @@ const path = require("path");
 dotenv.config();
 const app = express();
 
+
 app.use(
   cors({
-    credentials: true,
     origin: 'http://localhost:3000',
+    credentials: true
   })
 );
 app.use(cookieParser());
@@ -35,6 +36,10 @@ mongoose
 app.use("/user", require("./routes/User"));
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> template-duplicate
 app.listen(process.env.PORT || 5001, () =>
   console.log(`server Up on ${process.env.PORT || 5001}`)
 );
