@@ -105,6 +105,20 @@ const AvatarImg = styled.img`
   object-fit: cover;
   border: 1px solid #a47ca6;
   border-radius: 100%;
+
+  @media only screen and (max-width: 60em) {
+    display: none;
+    width: 20px;
+  height: 20px;
+
+  padding: 1px;
+  margin-right: 10px;
+  object-fit: cover;
+  border: 1px solid #a47ca6;
+  border-radius: 100%;
+    
+     
+    }
 `
 const Navbar = () => {
   const [isShowLogin, setIsShowLogin] = useState(false)
@@ -121,6 +135,10 @@ const Navbar = () => {
 
   const userDetails = useSelector((state) => state.userDetails)
   const { user } = userDetails
+
+  const userData = JSON.parse( localStorage.getItem('user' ) );
+
+  console.log(user)
 
   const logoutHandler = () => {
     dispatch(logout())
@@ -147,12 +165,15 @@ const Navbar = () => {
         <Right>
           {userInfo ? (
             <MenuItem onClick={() => navigate('/dashboard/home')}>
-              <AvatarImg
-                src={
-                  process.env.PUBLIC_URL + `/uploads/${userInfo.avatar}` 
-                }
-              />
-              {userInfo.firstName} {userInfo.lastName}
+
+              {userData  ? (<AvatarImg
+                src={process.env.PUBLIC_URL + `/uploads/${user.avatar}`}
+              />) : ((<AvatarImg
+                src={process.env.PUBLIC_URL + `/uploads/${userInfo.avatar}`}
+              />))}
+              
+              {userInfo.firstName}
+              {/* {userInfo.lastName} */}
             </MenuItem>
           ) : (
             <MenuItem onClick={() => navigate('/signup')}>Free Trial</MenuItem>
